@@ -1,5 +1,14 @@
 version: 2.1
 jobs:
+  test:
+      executor:
+        name: node/default
+        tag: '13'
+      steps:
+        - checkout
+        - node/install-packages
+        - run:
+            command: npm run test
   eslint:
       docker:
         - image: circleci/node:12.18.3
