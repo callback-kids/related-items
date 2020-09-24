@@ -21,22 +21,12 @@ jobs:
       - run: npm test
       - run: npm build
 
-  eslint:
-      docker:
-        - image: circleci/node:12.18.3
-      executor: default
-      steps:
-        - attach_workspace:
-            at: ~/
-        - eslint
-        - store_test_results:
-            path: reports/eslint
-        - store_artifacts:
-            path: reports/eslint
+
 
 
 orbs:
   node: circleci/node@3.0.0
+  eslint: arrai/eslint@2.0.0
 workflows:
   tests:
     jobs:
