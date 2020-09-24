@@ -26,10 +26,10 @@ jobs:
 
 orbs:
   node: circleci/node@3.0.0
-  eslint: arrai/eslint@2.0.0
+  # eslint: arrai/eslint@2.0.0
 workflows:
   tests:
     jobs:
       - test
-      - eslint
+      # - eslint
 
