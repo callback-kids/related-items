@@ -1,14 +1,5 @@
 version: 2.1
 jobs:
-  test:
-      docker:
-        - image: circleci/node:12.18.3
-      executor: default
-      steps:
-        - checkout
-        - node/install-packages
-        - run:
-            command: npm run test
   eslint:
       docker:
         - image: circleci/node:12.18.3
@@ -36,6 +27,7 @@ orbs:
 workflows:
   tests:
     jobs:
+      - install-node-example
       - test
       - build
       - eslint
