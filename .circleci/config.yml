@@ -1,7 +1,33 @@
 version: 2.1
+jobs:
+  eslint:
+      docker:
+        - image: circleci/node:12.18.3
+      executor: default
+      steps:
+        - attach_workspace:
+            at: ~/
+        - eslint
+        - store_test_results:
+            path: reports/eslint
+        - store_artifacts:
+            path: reports/eslint
+  build:
+    docker:
+      - image: circleci/node:12.18.3
+    executor: default
+    steps:
+      - checkout
+      - run:
+          command: npm run build
+
+
 orbs:
   node: circleci/node@3.0.0
 workflows:
-  node-tests:
+  tests:
     jobs:
-      - node/test
+      - test
+      - build
+      - eslint
+
