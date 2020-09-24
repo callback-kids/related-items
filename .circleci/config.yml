@@ -1,5 +1,26 @@
 version: 2.1
 jobs:
+  test:
+    docker:
+      - image: circleci/node:12.18.3
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: npm test
+      - run: npm build
+
   eslint:
       docker:
         - image: circleci/node:12.18.3
@@ -12,14 +33,6 @@ jobs:
             path: reports/eslint
         - store_artifacts:
             path: reports/eslint
-  build:
-    docker:
-      - image: circleci/node:12.18.3
-    executor: default
-    steps:
-      - checkout
-      - run:
-          command: npm run build
 
 
 orbs:
@@ -27,8 +40,6 @@ orbs:
 workflows:
   tests:
     jobs:
-      - install-node-example
       - test
-      - build
       - eslint
 
