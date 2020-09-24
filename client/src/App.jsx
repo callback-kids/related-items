@@ -1,20 +1,19 @@
 import React from 'react';
-import axios from 'axios';
-
-// const apiTest = () => {
-//  axios.get('http://52.26.193.201:3000/products/list')
-//   .then(data => {
-//     console.log(data);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   })
-// }
+import { Container, Column, Row } from 'react-bootstrap';
+// import axios from 'axios';
 
 const App = () => (
-  <div>
-    <h1 id="test">New React App</h1>
-  </div>
+  <Container>
+    <Row>
+      <Column xs={0} s={2} />
+      <Column xs={12} s={8}>
+        <div>
+          <h1 id="test">New React App</h1>
+        </div>
+      </Column>
+      <Column xs={0} s={2} />
+    </Row>
+  </Container>
 );
 
 export default App;
