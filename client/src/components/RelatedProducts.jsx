@@ -22,14 +22,19 @@ const RelatedProducts = ({ products }) => {
   return (
     <div>
       <div className="cards-slider">
-        <div className="cards-slider-wrapper" style={{}}>
+        <div
+          className="cards-slider-wrapper"
+          style={{
+            transform: `translateX(-${20 * currentCardIndex}%)`,
+          }}
+        >
           {products.map((value) => (
             <ProductCard data={value.data} reviews={value.reviews} images={value.images} />
           ))}
         </div>
       </div>
-      {currentCardIndex > 0 ? <Button className="arrow-button left-button" type="button">{'<-'}</Button> : ''}
-      {currentCardIndex < cardsLength ? <Button className="arrow-button right-button" type="button">{'->'}</Button> : ''}
+      {currentCardIndex > 0 ? <Button onClick={goLeft} className="arrow-button left-button" type="button">{'<-'}</Button> : ''}
+      {currentCardIndex < cardsLength ? <Button onClick={goRight} className="arrow-button right-button" type="button">{'->'}</Button> : ''}
     </div>
   );
 };
