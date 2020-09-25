@@ -6,15 +6,16 @@
 }
 
 .product-info{
-  font-size: 1.25vw;
+  /* font-size: 1.25vw; */
+  height: 30%;
 }
 .product-name{
   font-weight: bold;
 }
 .product-card{
   border: 1px solid black;
-  height: 10%;
-  width: 25%;
+  height: 100%;
+  width: 108%;
 }
 .carousel-container{
   display: flex;
@@ -23,13 +24,14 @@
   height:  300px;
   width: 100%;
   position: relative;
-  overflow: hidden;
+  overflow: scroll;
 }
 .product-image{
   border: 1px solid black;
+  height: 70%;
 }
 .rows{
-  border: 2px solid blue;
+  border: 1px solid blue;
   height: 300px;
 }
 

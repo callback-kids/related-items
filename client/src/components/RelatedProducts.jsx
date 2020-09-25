@@ -30,7 +30,7 @@ const RelatedProducts = () => (
 
   <div className="carousel-container">
     {cards.map((value) => (
-      <Col>
+      <Col xs={5} sm={4} md={3}>
         <ProductCard data={value.data} reviews={value.reviews} images={value.images} />
       </Col>
     ))}
