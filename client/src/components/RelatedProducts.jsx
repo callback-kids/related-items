@@ -24,17 +24,18 @@ const images = [
 
 const card = { data, reviews, images };
 
-const cards = [card, card, card, card];
+const cards = [card, card, card, card, card, card, card];
 
 const RelatedProducts = () => (
 
-  <div className="carousel-container">
-    {cards.map((value) => (
-      <Col xs={5} sm={4} md={3}>
+  <div className="cards-slider">
+    <div className="cards-slider-wrapper" style={{}}>
+      {cards.map((value) => (
         <ProductCard data={value.data} reviews={value.reviews} images={value.images} />
-      </Col>
-    ))}
+      ))}
+    </div>
   </div>
+
 );
 
 export default RelatedProducts;

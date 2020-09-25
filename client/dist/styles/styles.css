@@ -4,27 +4,25 @@
 .title-text{
   font-family: Kumbh Sans;
 }
-
-.product-info{
-  /* font-size: 1.25vw; */
-  height: 30%;
+.container{
+  height: 100vh;
+  width: 100vw;
+  border: 2px solid black;
 }
-.product-name{
-  font-weight: bold;
+.product-info{
+  height: 30%;
+  font-size: 2.25vh;
 }
 .product-card{
   border: 1px solid black;
-  height: 100%;
-  width: 108%;
+  height: 40vh;
+  min-width: 20%;
+  flex: 1;
 }
 .carousel-container{
-  display: flex;
-  flex-direction: row;
   border: 2px solid red;
-  height:  300px;
   width: 100%;
-  position: relative;
-  overflow: scroll;
+  overflow-x: hidden;
 }
 .product-image{
   border: 1px solid black;
@@ -32,6 +30,17 @@
 }
 .rows{
   border: 1px solid blue;
-  height: 300px;
+  height: 40vh;
+}
+.cards-slider-wrapper{
+  display: flex;
+  position: absolute;
+  border: 4px solid skyblue;
+}
+.cards-slider{
+  height: 100%;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
 }
 
