@@ -5,13 +5,18 @@ import ProductCard from './product_card/ProductCard';
 
 const RelatedProducts = ({ products }) => {
   const [currentCardIndex, changeCardIndex] = useState(0);
+  const [cardsLength, updateCardsLength] = useState(products.length - 1);
 
   const goRight = () => {
-
+    if (currentCardIndex < cardsLength) {
+      changeCardIndex(currentCardIndex + 1);
+    }
   };
 
   const goLeft = () => {
-
+    if (currentCardIndex > 0) {
+      changeCardIndex(currentCardIndex - 1);
+    }
   };
 
   return (
@@ -23,8 +28,8 @@ const RelatedProducts = ({ products }) => {
           ))}
         </div>
       </div>
-      <Button className="arrow-button left-button" type="button">{'<-'}</Button>
-      <Button className="arrow-button right-button" type="button">{'->'}</Button>
+      {currentCardIndex > 0 ? <Button className="arrow-button left-button" type="button">{'<-'}</Button> : ''}
+      {currentCardIndex < cardsLength ? <Button className="arrow-button right-button" type="button">{'->'}</Button> : ''}
     </div>
   );
 };
