@@ -1,5 +1,6 @@
 import RelatedProducts from '../client/src/components/RelatedProducts.jsx';
-import ProductCard from '../client/src/components/related_products/ProductCard.jsx'
+import ProductCard from '../client/src/components/product_card/ProductCard.jsx';
+import ProductInfo from '../client/src/components/product_card/ProductInfo';
 import { mount , shallow } from 'enzyme';
 
 describe('<RelatedProducts /> components', () => {
@@ -66,7 +67,7 @@ describe('<RelatedProducts /> rendering', () => {
 
 })
 
-describe('<ProductCard /> rendering', () => {
+describe('<ProductInfo /> rendering', () => {
 
   let wrapper;
 
@@ -76,10 +77,7 @@ describe('<ProductCard /> rendering', () => {
       name: 'blue suede',
       price: 50,
     }
-    const reviews = {
-      stars: 4.5
-    }
-    wrapper = shallow(<ProductCard data={productData} reviews={reviews} />);
+    wrapper = shallow(<ProductInfo data={productData} />);
   })
 
   test('should display product category', () => {
@@ -118,6 +116,18 @@ describe('<ProductCard /> inner components', () => {
 
   test('should contain a StarRating component', () => {
     expect(wrapper.find('StarRating').length).toBe(1);
+  })
+
+  test('should contain a ProductCard component', () => {
+    expect(wrapper.find('ProductCard').length).toBe(1);
+  })
+
+  test('should contain an ActionButton component', () => {
+    expect(wrapper.find('ActionButton').length).toBe(1);
+  })
+
+  test('should contain a ProductImage component', () => {
+    expect(wrapper.find('ProductImage').length).toBe(1);
   })
 
 })

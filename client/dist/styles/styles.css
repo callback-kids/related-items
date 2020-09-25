@@ -1,7 +1,8 @@
-#test{
-  border-width: 1px;
-  border-color: black;
-  width: 100%
+#root{
+  font-family: Crimson Text;
+}
+.title-text{
+  font-family: Kumbh Sans;
 }
 .test{
   font-size: 50px;
@@ -14,4 +15,13 @@
 .container{
   display: flex;
   flex-direction: row;
+}
+.product-info{
+  font-size: 1.25vw;
+}
+.product-name{
+  font-weight: bold;
+}
+.product-card{
+  border: 1px solid black;
 }

@@ -1,30 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ProductCard = ({ data, reviews }) => (
-  <div>
+const ProductInfo = ({ data }) => (
 
+  <div className="product-info">
+    <div className="title-text">Category</div>
     <div className="product-category">{data.category}</div>
     <div className="product-name">{data.name}</div>
     <div className="product-price">{`$${data.price}`}</div>
-
   </div>
+
 );
 
-ProductCard.propTypes = {
-  data: {
+ProductInfo.propTypes = {
+
+  data: PropTypes.shape({
     category: PropTypes.string,
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired,
     price: PropTypes.number,
-  },
-  reviews: {
-    stars: PropTypes.number,
-  },
+  }).isRequired,
+
 };
 
-ProductCard.defaultProps = {
-  data: PropTypes.object,
-  reviews: PropTypes.object,
-};
-
-export default ProductCard;
+export default ProductInfo;
