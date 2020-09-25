@@ -32,6 +32,7 @@ describe('<RelatedProducts /> components', () => {
   },
     ]
     wrapper = mount(<RelatedProducts products={cards} />);
+    cardListLength = cards.length;
   })
 
   test('should contain a ProductCard component', () => {

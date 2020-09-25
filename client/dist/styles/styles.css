@@ -20,7 +20,6 @@
   flex: 1;
 }
 .carousel-container{
-  border: 2px solid red;
   width: 100%;
   overflow-x: hidden;
   height: 100%;
@@ -39,7 +38,21 @@
 .cards-slider{
   height: 100%;
   position: relative;
-  width: 100%;
-  margin: 0 auto;
+  width: 25%;
+  border: 2px solid green;
+}
+.left-button{
+  left: 1%;
+}
+.right-button{
+  right: 0%;
+}
+.arrow-button{
+  top: 45%;
+  position: absolute;
+  opacity: 0.3;
+}
+.arrow-button:hover{
+  opacity: 0.8;
 }
 
