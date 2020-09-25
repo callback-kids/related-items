@@ -4,18 +4,7 @@
 .title-text{
   font-family: Kumbh Sans;
 }
-.test{
-  font-size: 50px;
-  border-width: 1px;
-  border-color: black;
-  background-color: black;
-  width: 100%;
-  height: 100%;
-}
-.container{
-  display: flex;
-  flex-direction: row;
-}
+
 .product-info{
   font-size: 1.25vw;
 }
@@ -24,17 +13,23 @@
 }
 .product-card{
   border: 1px solid black;
-  height: auto;
-  width: auto;
+  height: 10%;
+  width: 25%;
 }
 .carousel-container{
-  border: 2px solid green;
-  height: 100%;
-  width: 80%;
+  display: flex;
+  flex-direction: row;
+  border: 2px solid red;
+  height:  300px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 .product-image{
   border: 1px solid black;
-  height: 50px;
-  width: auto;
+}
+.rows{
+  border: 2px solid blue;
+  height: 300px;
 }
 

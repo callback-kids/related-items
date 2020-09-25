@@ -27,15 +27,14 @@ const card = { data, reviews, images };
 const cards = [card, card, card, card];
 
 const RelatedProducts = () => (
-  <Container className="carousel-container" fluid>
-    <Row>
-      {cards.map((value) => (
-        <Col>
-          <ProductCard data={value.data} reviews={value.reviews} images={value.images} />
-        </Col>
-      ))}
-    </Row>
-  </Container>
+
+  <div className="carousel-container">
+    {cards.map((value) => (
+      <Col>
+        <ProductCard data={value.data} reviews={value.reviews} images={value.images} />
+      </Col>
+    ))}
+  </div>
 );
 
 export default RelatedProducts;
