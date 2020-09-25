@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Image from 'react-bootstrap/Image';
 
 const ProductImage = ({ images, productName }) => (
-  <div>
-    <img src={images[0]} alt={productName} />
-  </div>
+
+  <Image className="product-image" src={images[0]} alt={productName} />
+
 );
 
 ProductImage.propTypes = {

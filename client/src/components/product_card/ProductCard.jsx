@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Card from 'react-bootstrap/Card';
 import ProductInfo from './ProductInfo';
 import ProductImage from './ProductImage';
 
 const ProductCard = ({ data, reviews, images }) => (
-  <div className="product-card">
+
+  <Card className="product-card">
     <ProductImage images={images} productName={data.name} />
     <ProductInfo data={data} />
-  </div>
+  </Card>
+
 );
 
 ProductCard.propTypes = {

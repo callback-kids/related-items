@@ -28,14 +28,13 @@ const App = () => (
   <div>
     <Container fluid>
       <Row>
-        <Col xs={0} sm={2}>
-          <ProductCard data={data} reviews={reviews} images={images} />
+        <Col xs={0} sm={2} />
+        <Col xs={12} sm={8}>
+          <RelatedProducts />
         </Col>
-        <Col xs={12} sm={8} />
         <Col xs={0} sm={2} />
       </Row>
     </Container>
-    <RelatedProducts />
     <Outfit />
   </div>
 
