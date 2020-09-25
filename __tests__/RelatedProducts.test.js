@@ -1,13 +1,48 @@
-import RelatedProducts from '../client/src/components/RelatedProductsjsx';
+import RelatedProducts from '../client/src/components/RelatedProducts.jsx';
 import ProductCard from '../client/src/components/related_products/ProductCard.jsx'
 import { mount , shallow } from 'enzyme';
 
 describe('<RelatedProducts /> components', () => {
 
   let wrapper;
-
+  let cardListLength;
   beforeEach(() => {
-    wrapper = mount(<RelatedProducts />);
+    // need to render a list of product cards which are passed as props here
+    const cards = [
+      {
+        productInfo: {
+          category: 'Shoes',
+          name: 'blue suede',
+          price: 50,
+      },
+        review: {
+          stars: 3
+        }
+    },
+    {
+      productInfo: {
+        category: 'Jacket',
+        name: 'pants, jacket, shirt',
+        price: 100,
+    },
+      review: {
+        stars: 4
+      }
+  },
+    ]
+    wrapper = mount(<RelatedProducts products={cards} />);
+  })
+
+  test('should contain a ProductCard component', () => {
+    expect(wrapper.find('RelatedProducts')).toBeTruthy();
+  })
+  // compare to the length of the list of product card passed above as props
+  test('should render a list of ProductCard components', () => {
+    expect(wrapper.find('RelatedProducts').length).toBe(cardListLength)
+  })
+
+  test('should contain an Outfit component', () => {
+    expect(wrapper.find('Outfit').length).toBe(1);
   })
 
 })
@@ -82,9 +117,16 @@ describe('<ProductCard /> inner components', () => {
   })
 
   test('should contain a StarRating component', () => {
-    let stars = wrapper.find('.star-rating')
     expect(wrapper.find('StarRating').length).toBe(1);
   })
 
 })
+
+// describe('<StarRating />', () => {
+
+//   test('should have a prop for star rating', () => {
+
+//   })
+
+// })
 
