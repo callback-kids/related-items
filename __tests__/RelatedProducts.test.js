@@ -128,7 +128,7 @@ describe('<ProductCard /> inner components', () => {
     wrapper = mount(<ProductCard data={productData} reviews={reviews} images={images} />);
   })
 
-  test('should contain a StarRating component', () => {
+  xtest('should contain a StarRating component', () => {
     expect(wrapper.find('StarRating').length).toBe(1);
   })
 
@@ -136,7 +136,7 @@ describe('<ProductCard /> inner components', () => {
     expect(wrapper.find('ProductInfo').length).toBe(1);
   })
 
-  test('should contain an ActionButton component', () => {
+  xtest('should contain an ActionButton component', () => {
     expect(wrapper.find('ActionButton').length).toBe(1);
   })
 
@@ -145,12 +145,4 @@ describe('<ProductCard /> inner components', () => {
   })
 
 })
-
-// describe('<StarRating />', () => {
-
-//   test('should have a prop for star rating', () => {
-
-//   })
-
-// })
 
