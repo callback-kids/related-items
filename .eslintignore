@@ -1,3 +1,4 @@
 jest.config.js
-/__tests__
+client/dist/bundle.js
 babel.config.js
+__tests__

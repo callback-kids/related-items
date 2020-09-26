@@ -19,17 +19,18 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: npm test
-      - run: npm build
+      - run: npm run build
 
 
 
 
 orbs:
   node: circleci/node@3.0.0
-  # eslint: arrai/eslint@2.0.0
 workflows:
   tests:
     jobs:
-      - test
-      # - eslint
-
+      - test:
+        filters:
+          branches:
+            only:
+              -master
