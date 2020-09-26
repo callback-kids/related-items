@@ -8,7 +8,7 @@ const ProductCard = ({ data, reviews, images }) => (
 
   <Card className="product-card">
     <ProductImage images={images} productName={data.name} />
-    <ProductInfo data={data} />
+    <ProductInfo data={data} reviews={reviews} />
   </Card>
 
 );

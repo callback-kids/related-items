@@ -13,6 +13,7 @@
 .product-info{
   height: 30%;
   font-size: 2.25vh;
+  padding-left: 5%;
 }
 .product-card{
   border: 1px solid #373838;
@@ -75,4 +76,15 @@
   border-color: #84898C !important;
   outline: none !important;
   box-shadow: none !important;
+}
+.star-wrapper{
+  position: relative;
+  padding-left: 20%;
+  display: inline-block;
+  top: 0.8vh;
+}
+.product-price{
+  position: relative;
+  bottom: 10%;
+  margin-bottom: -5%;
 }

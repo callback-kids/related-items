@@ -13,7 +13,7 @@ const data = {
 };
 
 const reviews = {
-  stars: 3,
+  stars: 3.5,
 };
 
 const images = [
