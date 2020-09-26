@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StarRating from './StarRating';
-import ReactStars from 'react-rating-stars-component';
 
 const ProductInfo = ({ data, reviews }) => (
 
@@ -25,6 +24,7 @@ const ProductInfo = ({ data, reviews }) => (
 ProductInfo.propTypes = {
 
   data: PropTypes.shape({
+    cardType: PropTypes.string.isRequired,
     category: PropTypes.string,
     name: PropTypes.string.isRequired,
     price: PropTypes.number,

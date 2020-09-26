@@ -7,7 +7,7 @@ import ProductImage from './ProductImage';
 const ProductCard = ({ data, reviews, images }) => (
 
   <Card className="product-card">
-    <ProductImage images={images} productName={data.name} />
+    <ProductImage images={images} productData={data} />
     <ProductInfo data={data} reviews={reviews} />
   </Card>
 
@@ -16,6 +16,7 @@ const ProductCard = ({ data, reviews, images }) => (
 ProductCard.propTypes = {
 
   data: PropTypes.shape({
+    cardType: PropTypes.string.isRequired,
     category: PropTypes.string,
     name: PropTypes.string.isRequired,
     price: PropTypes.number,

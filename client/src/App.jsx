@@ -7,6 +7,7 @@ import RelatedProducts from './components/RelatedProducts';
 import ProductCard from './components/product_card/ProductCard';
 
 const data = {
+  cardType: 'related',
   category: 'Shoes',
   name: 'blue suede',
   price: 50,

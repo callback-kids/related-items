@@ -32,8 +32,29 @@
   height: 100%;
 }
 .product-image{
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.product-image-container{
   height: 75%;
   width: 100%;
+}
+.card-button-container{
+  position: absolute;
+  right: 5%;
+  top: 3%;
+}
+.card-button{
+  font-size: 0.75vw;
+  color: #373838;
+  border-radius: 50%;
+  border-color: #0F4C81;
+  background-color: transparent;
+}
+.card-button:hover{
+  background-color: #84898C;
+  border-color: #84898C;
 }
 .rows{
   border: 1px solid blue;
