@@ -43,7 +43,7 @@ describe('<RelatedProducts /> components', () => {
   })
 
   test('should contain a right arrow button', () => {
-    expect(wrapper.find('.right-button')).toBeTruthy();
+    expect(wrapper.find('.right-button').length).toBe(2);
   })
 
   test('should not contain a left arrow button', () => {
@@ -52,18 +52,18 @@ describe('<RelatedProducts /> components', () => {
 
   test('should have left arrow appear once right arrow has been clicked once', () => {
     wrapper.find('.right-button').first().simulate('click')
-    expect(wrapper.find('.left-button')).toBeTruthy();
+    expect(wrapper.find('.left-button').length).toBe(2);
   })
 
   test('should have left arrow disappear once right arrow has been clicked once and then left arrow is clicked once', () => {
     wrapper.find('.right-button').first().simulate('click')
-    expect(wrapper.find('.left-button')).toBeTruthy();
+    expect(wrapper.find('.left-button').length).toBe(2);
     wrapper.find('.left-button').first().simulate('click')
     expect(wrapper.find('.left-button').length).toBe(0);
   })
 
   test('should have right arrow disappear once right arrow has been cards.length - 3 times', () => {
-    expect(wrapper.find('.right-button')).toBeTruthy();
+    expect(wrapper.find('.right-button').length).toBe(2);
     wrapper.find('.right-button').first().simulate('click')
     wrapper.find('.right-button').first().simulate('click')
     wrapper.find('.right-button').first().simulate('click')

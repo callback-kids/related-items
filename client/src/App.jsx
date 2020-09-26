@@ -38,13 +38,6 @@ const App = () => (
       <Col xs={1} sm={2} />
     </Row>
     <Row className="rows">
-      <Col xs={1} sm={2} />
-      <Col xs={10} sm={8} className="carousel-container">
-        <RelatedProducts products={cards} />
-      </Col>
-      <Col xs={1} sm={2} />
-    </Row>
-    <Row className="rows">
       <Col xs={0} sm={2} />
       <Col xs={12} sm={8}>
         <Outfit />
