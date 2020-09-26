@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Outfit = () => (
-  <div>Test</div>
+  <div>Outfit Goes Here</div>
 );
 
 export default Outfit;

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import StarRating from './StarRating';
 
-const ProductInfo = ({ data }) => (
+const ProductInfo = ({ data, reviews }) => (
 
   <div className="product-info">
 
@@ -10,8 +11,12 @@ const ProductInfo = ({ data }) => (
       <span className="product-category">{` ${data.category}`}</span>
     </div>
     <div className="product-name">{data.name}</div>
-    <div className="product-price">{`$${data.price}`}</div>
-
+    <div className="product-price-rating">
+      <span className="product-price">{`$${data.price}`}</span>
+      <span className="star-wrapper">
+        <StarRating rating={reviews.stars} />
+      </span>
+    </div>
   </div>
 
 );
@@ -19,9 +24,14 @@ const ProductInfo = ({ data }) => (
 ProductInfo.propTypes = {
 
   data: PropTypes.shape({
+    cardType: PropTypes.string.isRequired,
     category: PropTypes.string,
     name: PropTypes.string.isRequired,
     price: PropTypes.number,
+  }).isRequired,
+
+  reviews: PropTypes.shape({
+    stars: PropTypes.number,
   }).isRequired,
 
 };
