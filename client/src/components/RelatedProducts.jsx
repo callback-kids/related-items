@@ -27,7 +27,7 @@ const RelatedProducts = ({ products }) => {
           className="cards-slider-wrapper"
           style={{
             // moves carousel to the left relative to the container
-            transform: `translateX(-${21.5 * currentCardIndex}%)`,
+            transform: `translateX(-${15.5 * currentCardIndex}vw)`,
           }}
         >
           {products.map((value) => (
