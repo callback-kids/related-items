@@ -12,8 +12,8 @@ const ProductInfo = ({ data, reviews }) => (
       <span className="product-category">{` ${data.category}`}</span>
     </div>
     <div className="product-name">{data.name}</div>
-    <div className="product-price">
-      {`$${data.price}`}
+    <div className="product-price-rating">
+      <span className="product-price">{`$${data.price}`}</span>
       <span className="star-wrapper">
         <StarRating rating={reviews.stars} />
       </span>

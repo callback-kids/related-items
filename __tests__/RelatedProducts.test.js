@@ -85,7 +85,10 @@ describe('<ProductInfo /> rendering', () => {
       name: 'blue suede',
       price: 50,
     }
-    wrapper = shallow(<ProductInfo data={productData} />);
+    const reviews = {
+      stars: 3.5,
+    }
+    wrapper = shallow(<ProductInfo data={productData} reviews={reviews} />);
   })
 
   test('should display product category', () => {
@@ -128,7 +131,7 @@ describe('<ProductCard /> inner components', () => {
     wrapper = mount(<ProductCard data={productData} reviews={reviews} images={images} />);
   })
 
-  xtest('should contain a StarRating component', () => {
+  test('should contain a StarRating component', () => {
     expect(wrapper.find('StarRating').length).toBe(1);
   })
 
