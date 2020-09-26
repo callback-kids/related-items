@@ -5,10 +5,11 @@ import ProductCard from './product_card/ProductCard';
 
 const RelatedProducts = ({ products }) => {
   const [currentCardIndex, changeCardIndex] = useState(0);
-  const [cardsLength, updateCardsLength] = useState(products.length - 1);
+  // subracting 3 since you want to display a total of 3-4 images no matter what
+  const [scrollLength] = useState(products.length - 3);
 
   const goRight = () => {
-    if (currentCardIndex < cardsLength) {
+    if (currentCardIndex < scrollLength) {
       changeCardIndex(currentCardIndex + 1);
     }
   };
@@ -25,7 +26,8 @@ const RelatedProducts = ({ products }) => {
         <div
           className="cards-slider-wrapper"
           style={{
-            transform: `translateX(-${20 * currentCardIndex}%)`,
+            // moves carousel to the left relative to the container
+            transform: `translateX(-${21.5 * currentCardIndex}%)`,
           }}
         >
           {products.map((value) => (
@@ -34,7 +36,7 @@ const RelatedProducts = ({ products }) => {
         </div>
       </div>
       {currentCardIndex > 0 ? <Button onClick={goLeft} className="arrow-button left-button" type="button">{'<-'}</Button> : ''}
-      {currentCardIndex < cardsLength ? <Button onClick={goRight} className="arrow-button right-button" type="button">{'->'}</Button> : ''}
+      {currentCardIndex < scrollLength ? <Button onClick={goRight} className="arrow-button right-button" type="button">{'->'}</Button> : ''}
     </div>
   );
 };
