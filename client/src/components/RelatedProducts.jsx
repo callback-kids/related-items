@@ -35,8 +35,8 @@ const RelatedProducts = ({ products }) => {
           ))}
         </div>
       </div>
-      {currentCardIndex > 0 ? <Button onClick={goLeft} className="arrow-button left-button" type="button">{'<-'}</Button> : ''}
-      {currentCardIndex < scrollLength ? <Button onClick={goRight} className="arrow-button right-button" type="button">{'->'}</Button> : ''}
+      {currentCardIndex > 0 ? <Button onClick={goLeft} className="arrow-button left-button" type="button">{'<'}</Button> : ''}
+      {currentCardIndex < scrollLength ? <Button onClick={goRight} className="arrow-button right-button" type="button">{'>'}</Button> : ''}
     </div>
   );
 };
