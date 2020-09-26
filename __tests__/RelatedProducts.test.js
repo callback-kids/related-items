@@ -139,7 +139,7 @@ describe('<ProductCard /> inner components', () => {
     expect(wrapper.find('ProductInfo').length).toBe(1);
   })
 
-  xtest('should contain an ActionButton component', () => {
+  test('should contain an ActionButton component', () => {
     expect(wrapper.find('ActionButton').length).toBe(1);
   })
 

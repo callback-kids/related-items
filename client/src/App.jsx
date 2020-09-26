@@ -31,14 +31,21 @@ const cards = [card, card, card, card, card, card, card, card, card];
 const App = () => (
 
   <Container className="container" fluid>
-    <Row className="rows">
+    <Row>
+      <Col xs={1} sm={2} />
+      <Col xs={10} sm={8}>
+        <div className="carousel-title">People Also Liked</div>
+      </Col>
+      <Col xs={1} sm={2} />
+    </Row>
+    <Row className="carousel-rows">
       <Col xs={1} sm={2} />
       <Col xs={10} sm={8}>
         <RelatedProducts products={cards} />
       </Col>
       <Col xs={1} sm={2} />
     </Row>
-    <Row className="rows">
+    <Row className="carousel-rows">
       <Col xs={0} sm={2} />
       <Col xs={12} sm={8}>
         <Outfit />

@@ -5,6 +5,9 @@
 .title-text{
   font-family: Kumbh Sans;
 }
+.carousel-title{
+  font-size: 2vw;
+}
 .container{
   height: 100vh;
   width: 100vw;
@@ -60,8 +63,7 @@
   background-color: #84898C;
   border-color: #84898C;
 }
-.rows{
-  border: 1px solid blue;
+.carousel-rows{
   height: 40vh;
 }
 .cards-slider-wrapper{
