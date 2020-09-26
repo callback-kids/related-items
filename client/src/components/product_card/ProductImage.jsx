@@ -6,7 +6,7 @@ import ActionButton from './ActionButton';
 const ProductImage = ({ images, productData }) => (
 
   <div className="product-image-container">
-    <Image className="product-image" src={images[2]} alt={productData.name} />
+    <Image className="product-image" src={images[0]} alt={productData.name} />
     <div className="card-button-container">
       <ActionButton cardType={productData.cardType} />
     </div>
