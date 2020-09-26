@@ -6,10 +6,12 @@ import ProductImage from './ProductImage';
 
 const ProductCard = ({ data, reviews, images }) => (
 
-  <Card className="product-card">
-    <ProductImage images={images} productData={data} />
-    <ProductInfo data={data} reviews={reviews} />
-  </Card>
+  <div className="product-card-wrapper">
+    <Card className="product-card">
+      <ProductImage images={images} productData={data} />
+      <ProductInfo data={data} reviews={reviews} />
+    </Card>
+  </div>
 
 );
 
