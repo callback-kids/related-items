@@ -18,7 +18,7 @@
   border: 1px solid #373838;
   height: 39vh;
   /* max-width: 20%; */
-  min-width: 14vw;
+  min-width: 13vw;
   flex: 1;
   margin-right: 1.5vw;
 }
@@ -49,10 +49,10 @@
   width: 100%;
 }
 .left-button{
-  left: 2%;
+  left: -5%;
 }
 .right-button{
-  right: 0%;
+  right: -5%;
 }
 .arrow-button{
   top: 45%;
@@ -63,6 +63,7 @@
   font-size: 3vh;
   background-color: #84898C;
   border-color: #84898C;
+  z-index: 1;
 }
 .arrow-button:hover{
   opacity: 0.9;

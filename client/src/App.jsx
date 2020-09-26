@@ -32,7 +32,7 @@ const App = () => (
   <Container className="container" fluid>
     <Row className="rows">
       <Col xs={1} sm={2} />
-      <Col xs={10} sm={8} className="carousel-container">
+      <Col xs={10} sm={8}>
         <RelatedProducts products={cards} />
       </Col>
       <Col xs={1} sm={2} />

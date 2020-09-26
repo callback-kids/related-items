@@ -21,13 +21,13 @@ const RelatedProducts = ({ products }) => {
   };
 
   return (
-    <div>
+    <div className="carousel-container">
       <div className="cards-slider">
         <div
           className="cards-slider-wrapper"
           style={{
             // moves carousel to the left relative to the container
-            transform: `translateX(-${15.5 * currentCardIndex}vw)`,
+            transform: `translateX(-${14.5 * currentCardIndex}vw)`,
           }}
         >
           {products.map((value) => (
