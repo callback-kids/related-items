@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Outfit from './components/Outfit';
 import RelatedProducts from './components/RelatedProducts';
-import ProductCard from './components/product_card/ProductCard';
+import * as controller from './routes/apicontroller';
 
 const data = {
   cardType: 'related',
@@ -28,32 +28,54 @@ const card = { data, reviews, images };
 
 const cards = [card, card, card, card, card, card, card, card, card];
 
-const App = () => (
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      relatedItems: [],
+    };
+  }
 
-  <Container className="container" fluid>
-    <Row>
-      <Col xs={1} sm={2} />
-      <Col xs={10} sm={8}>
-        <div className="carousel-title">People Also Liked</div>
-      </Col>
-      <Col xs={1} sm={2} />
-    </Row>
-    <Row className="carousel-rows">
-      <Col xs={1} sm={2} />
-      <Col xs={10} sm={8}>
-        <RelatedProducts products={cards} />
-      </Col>
-      <Col xs={1} sm={2} />
-    </Row>
-    <Row className="carousel-rows">
-      <Col xs={0} sm={2} />
-      <Col xs={12} sm={8}>
-        <Outfit />
-      </Col>
-      <Col xs={0} sm={2} />
-    </Row>
-  </Container>
+  componentDidMount() {
+    console.log('getting new items');
+    controller.getAllProductInfo(6, 'related')
+      .then((cardsArray) => {
+        console.log('array:', cardsArray);
+        this.setState({
+          relatedItems: cardsArray,
+        });
+        console.log('new state is: ', this.state.relatedItems);
+      })
+      .catch((err) => console.log(err));
+  }
 
-);
+  render() {
+    return (
+      <Container className="container" fluid>
+        <Row>
+          <Col xs={1} sm={2} />
+          <Col xs={10} sm={8}>
+            <div className="carousel-title">People Also Liked</div>
+          </Col>
+          <Col xs={1} sm={2} />
+        </Row>
+        <Row className="carousel-rows">
+          <Col xs={1} sm={2} />
+          <Col xs={10} sm={8}>
+            <RelatedProducts products={this.state.relatedItems} />
+          </Col>
+          <Col xs={1} sm={2} />
+        </Row>
+        <Row className="carousel-rows">
+          <Col xs={0} sm={2} />
+          <Col xs={12} sm={8}>
+            <Outfit />
+          </Col>
+          <Col xs={0} sm={2} />
+        </Row>
+      </Container>
+    );
+  }
+}
 
 export default App;

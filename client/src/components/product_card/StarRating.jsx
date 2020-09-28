@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const StarRating = ({ rating }) => (
   <ReactStars
     count={5}
-    size="vh"
+    size
     isHalf
     edit={false}
     value={rating}
