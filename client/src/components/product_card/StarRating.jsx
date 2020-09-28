@@ -9,7 +9,7 @@ const StarRating = ({ rating }) => (
     isHalf
     edit={false}
     value={rating}
-    activeColor="#ffd700"
+    activeColor="#F5B895"
   />
 );
 

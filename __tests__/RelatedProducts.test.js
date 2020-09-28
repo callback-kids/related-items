@@ -1,6 +1,7 @@
 import RelatedProducts from '../client/src/components/RelatedProducts.jsx';
 import ProductCard from '../client/src/components/product_card/ProductCard.jsx';
 import ProductInfo from '../client/src/components/product_card/ProductInfo';
+import ThumbnailCarousel from '../client/src/components/product_card/ThumbnailCarousel';
 import { mount , shallow } from 'enzyme';
 
 describe('<RelatedProducts /> components', () => {
@@ -147,5 +148,56 @@ describe('<ProductCard /> inner components', () => {
     expect(wrapper.find('ProductImage').length).toBe(1);
   })
 
+  test('should not have left and right arrow on render', () => {
+    expect(wrapper.exists('.image-left-arrow')).toBe(false);
+    expect(wrapper.exists('.image-right-arrow')).toBe(false);
+  })
+
+
+  test('should have left and right arrow on image hover', () => {
+    wrapper.simulate('mouseenter');
+    expect(wrapper.exists('ThumbnailCarousel')).toBe(true);
+    expect(wrapper.exists('.image-left-arrow')).toBe(true);
+    expect(wrapper.exists('.image-right-arrow')).toBe(true);
+  })
+
+  test('should change image on left arrow click', () => {
+    wrapper.simulate('mouseenter');
+    wrapper.find('.image-left-arrow').first().simulate('click')
+    expect(wrapper.find('.product-image').first().prop('src')).toBe('https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80')
+    wrapper.find('.image-left-arrow').first().simulate('click')
+    expect(wrapper.find('.product-image').first().prop('src')).toBe('https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80')
+  })
+
+  test('should change image on right arrow click', () => {
+    wrapper.simulate('mouseenter');
+    wrapper.find('.image-right-arrow').first().simulate('click')
+    expect(wrapper.find('.product-image').first().prop('src')).toBe('https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80')
+    wrapper.find('.image-right-arrow').first().simulate('click')
+    wrapper.find('.image-right-arrow').first().simulate('click')
+    wrapper.find('.image-right-arrow').first().simulate('click')
+    expect(wrapper.find('.product-image').first().prop('src')).toBe('https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80')
+  })
+
 })
+
+describe('<ThumbnailCarousel /> shallow render: ', () => {
+
+  let wrapper;
+
+  beforeEach(() => {
+    const mockClickProp = jest.fn();
+    wrapper = shallow(<ThumbnailCarousel click={mockClickProp} />)
+  });
+
+  test('should contain a left arrow button', () => {
+    expect(wrapper.exists('.image-left-arrow')).toBe(true);
+  })
+
+  test('should contain a right arrow button', () => {
+    expect(wrapper.exists('.image-right-arrow')).toBe(true);
+  })
+
+})
+
 

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Image from 'react-bootstrap/Image';
 import ActionButton from './ActionButton';
 
-const ProductImage = ({ images, productData }) => (
+const ProductImage = ({ mainImage, productData }) => (
 
   <div className="product-image-container">
-    <Image className="product-image" src={images[2]} alt={productData.name} />
+    <Image className="product-image" src={mainImage} alt={productData.name} />
     <div className="card-button-container">
       <ActionButton cardType={productData.cardType} />
     </div>
@@ -16,7 +16,7 @@ const ProductImage = ({ images, productData }) => (
 
 ProductImage.propTypes = {
 
-  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  mainImage: PropTypes.string.isRequired,
 
   productData: PropTypes.shape({
     cardType: PropTypes.string.isRequired,
