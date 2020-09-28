@@ -39,6 +39,6 @@ export const getStars = (id) => {
 
 };
 
-export const getCart = () => {
-
-};
+export const getCart = (session) => model.getCart(session)
+  .then((cart) => cart)
+  .catch((err) => console.log(err));
