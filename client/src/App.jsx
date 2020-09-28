@@ -32,60 +32,21 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      relatedItems: cards,
+      relatedItems: [],
     };
   }
-  // retrieves and formats data for one product card
-
-  // gets array of related product id's, gets info for each product id
-  // and creates array entry for each related product
 
   componentDidMount() {
     console.log('getting new items');
-    // this.getAllProductInfo(1)
-    //   .then((cardsArray) => {
-    //     this.setState({
-    //       relatedItems: cardsArray,
-    //     });
-    //   })
-    //   .catch((err) => console.log(err));
-  }
-
-  getOneProductInfo(id) {
-    const itemInfo = {};
-    return controller.getItemInfo(id)
-      .then((info) => {
-        itemInfo.data = info;
-        return controller.getItemPhotos(id);
+    controller.getAllProductInfo(6, 'related')
+      .then((cardsArray) => {
+        console.log('array:', cardsArray);
+        this.setState({
+          relatedItems: cardsArray,
+        });
+        console.log('new state is: ', this.state.relatedItems);
       })
-      .then((photos) => {
-        itemInfo.images = photos;
-        return controller.getStars(id);
-      })
-      .then((stars) => {
-        itemInfo.reviews = stars;
-        return itemInfo;
-      })
-      .catch((err) => { throw err; });
-  }
-
-  getAllProductInfo(id) {
-    return controller.getRelatedItemsList(id)
-    // get list of related product id's
-      .then((relatedItemsList) => {
-        this.createProductCardArray(relatedItemsList);
-        return Promise.all(relatedItemsList)
-          .then((cardsArray) => cardsArray);
-      })
-      .catch((err) => { throw err; });
-  }
-
-  createProductCardArray(productList) {
-    const returnArray = [];
-    for (let i = 0; i < productList.length; i + 1) {
-      returnArray.push(this.getOneProductInfo(productList[i]));
-    }
-    return returnArray;
+      .catch((err) => console.log(err));
   }
 
   render() {

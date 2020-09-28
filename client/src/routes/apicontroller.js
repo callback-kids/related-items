@@ -1,7 +1,9 @@
 import * as model from './apimodel';
 
 export const getRelatedItemsList = (id) => model.getRelatedItems(id)
-  .then((items) => items)
+  .then((items) => {
+    return items;
+  })
   .catch((err) => console.log(err));
 
 const formatItemInfo = (itemInfo, cardType) => {
@@ -10,7 +12,7 @@ const formatItemInfo = (itemInfo, cardType) => {
     cardType,
     category: itemInfo.category,
     name: itemInfo.name,
-    price: itemInfo.default_price,
+    price: parseInt(itemInfo.default_price, 10),
   };
   return formattedItemInfo;
 };
@@ -25,8 +27,14 @@ const formatItemPhotos = (itemPhotos) => {
   const photos = [];
   // each item in array has a thumbnail image url and regular image url
   itemPhotos.forEach((value) => {
-    thumbnails.push(value.thumbnail_url);
-    photos.push(value.url);
+    if (value.url === null || value.thumbnail_url === null) {
+      // default, image not found, image
+      thumbnails.push('https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg');
+      photos.push('https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg');
+    } else {
+      thumbnails.push(value.thumbnail_url);
+      photos.push(value.url);
+    }
   });
   // return array of thumbnails and regular photos
   return {
@@ -47,7 +55,7 @@ const calculateStars = (starData) => {
   const entries = Object.entries(starData);
   // edge case, no reviews
   if (entries.length === 0) {
-    return 0;
+    return { stars: 0 };
   }
   // reviews are in form of value: total number of reviews
   entries.forEach((review) => {
@@ -70,11 +78,14 @@ export const getCart = (session) => model.getCart(session)
   .catch((err) => console.log(err));
 
 // retrieves and formats info for one product card
-const getOneProductInfo = (id) => {
+const getOneProductInfo = (id, cardType) => {
   const itemInfo = {};
   return getItemInfo(id)
     .then((info) => {
-      itemInfo.data = info;
+      itemInfo.data = {
+        ...info,
+        cardType,
+      };
       return getItemPhotos(id);
     })
     .then((photos) => {
@@ -89,22 +100,21 @@ const getOneProductInfo = (id) => {
 };
 
 // creates array comprised of the promises returned from calling getoneproductinfo
-const createProductCardArray = (productList) => {
+const createProductCardArray = (productList, cardType) => {
   const returnArray = [];
-  for (let i = 0; i < productList.length; i + 1) {
-    returnArray.push(getOneProductInfo(productList[i]));
+  for (let i = 0; i < productList.length; i += 1) {
+    returnArray.push(getOneProductInfo(productList[i], cardType));
   }
   return returnArray;
 };
 
 // gets relateditems list and returns array of objects containing info for each item
-export const getAllProductInfo = (id) => {
-  getRelatedItemsList(id)
+// cardtype is either 'related' or 'outfit'
+export const getAllProductInfo = (id, cardType) => getRelatedItemsList(id)
   // get list of related product id's
-    .then((relatedItemsList) => {
-      createProductCardArray(relatedItemsList);
-      return Promise.all(relatedItemsList)
-        .then((cardsArray) => cardsArray);
-    })
-    .catch((err) => { throw err; });
-};
+  .then((relatedItemsList) => {
+    const promiseList = createProductCardArray(relatedItemsList, cardType);
+    return Promise.all(promiseList)
+      .then((cardsArray) => cardsArray);
+  })
+  .catch((err) => { console.log(err); });

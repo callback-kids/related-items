@@ -31,7 +31,11 @@ const RelatedProducts = ({ products }) => {
           }}
         >
           {products.map((value) => (
-            <ProductCard data={value.data} reviews={value.reviews} images={value.images} />
+            <ProductCard
+              data={value.data}
+              images={value.images.thumbnails}
+              reviews={value.reviews}
+            />
           ))}
         </div>
       </div>
