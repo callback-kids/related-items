@@ -1,5 +1,8 @@
-import axios from 'axios';
 import * as model from './apimodel';
+
+export const getRelatedItemsList = (id) => model.getRelatedItems(id)
+  .then((items) => items)
+  .catch((err) => console.log(err));
 
 const formatItemInfo = (itemInfo, cardType) => {
   // create obj with cardtype, category, name and price
@@ -12,6 +15,7 @@ const formatItemInfo = (itemInfo, cardType) => {
   return formattedItemInfo;
 };
 
+// return product item info
 export const getItemInfo = (id, cardType) => model.getItemInfo(id)
   .then((itemInfo) => formatItemInfo(itemInfo, cardType))
   .catch((err) => { console.log(err); });
@@ -31,6 +35,7 @@ const formatItemPhotos = (itemPhotos) => {
   };
 };
 
+// return items photos
 export const getItemPhotos = (id) => model.getItemPhotos(id)
   .then((itemPhotos) => formatItemPhotos(itemPhotos))
   .catch((err) => { console.log(err); });
@@ -54,6 +59,7 @@ const calculateStars = (starData) => {
   return { stars: reviewAvg };
 };
 
+// return avg star rating for item
 export const getStars = (id) => model.getReviewData(id)
   // data comes in as number of reviews per star rating, need to calculate avg and return
   .then((reviewData) => calculateStars(reviewData))

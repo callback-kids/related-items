@@ -31,8 +31,12 @@ const cards = [card, card, card, card, card, card, card, card, card];
 const App = () => {
   const [relatedItems, updatedRelatedItems] = useState('');
 
+  const getAllProductInfo = (id) => {
+
+  }
+
   useEffect(() => {
-    controller.getStars(1)
+    controller.getRelatedItemsList(1)
       .then((related) => updatedRelatedItems(JSON.stringify(related)))
       .catch((err) => console.log(err));
   }, []);
