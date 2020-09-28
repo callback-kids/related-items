@@ -16,7 +16,7 @@ const formatItemInfo = (itemInfo, cardType) => {
 };
 
 // return product item info
-export const getItemInfo = (id, cardType) => model.getItemInfo(id)
+const getItemInfo = (id, cardType) => model.getItemInfo(id)
   .then((itemInfo) => formatItemInfo(itemInfo, cardType))
   .catch((err) => { console.log(err); });
 
@@ -36,7 +36,7 @@ const formatItemPhotos = (itemPhotos) => {
 };
 
 // return items photos
-export const getItemPhotos = (id) => model.getItemPhotos(id)
+const getItemPhotos = (id) => model.getItemPhotos(id)
   .then((itemPhotos) => formatItemPhotos(itemPhotos))
   .catch((err) => { console.log(err); });
 
@@ -60,7 +60,7 @@ const calculateStars = (starData) => {
 };
 
 // return avg star rating for item
-export const getStars = (id) => model.getReviewData(id)
+const getStars = (id) => model.getReviewData(id)
   // data comes in as number of reviews per star rating, need to calculate avg and return
   .then((reviewData) => calculateStars(reviewData))
   .catch((err) => console.log(err));
@@ -68,3 +68,43 @@ export const getStars = (id) => model.getReviewData(id)
 export const getCart = (session) => model.getCart(session)
   .then((cart) => cart)
   .catch((err) => console.log(err));
+
+// retrieves and formats info for one product card
+const getOneProductInfo = (id) => {
+  const itemInfo = {};
+  return getItemInfo(id)
+    .then((info) => {
+      itemInfo.data = info;
+      return getItemPhotos(id);
+    })
+    .then((photos) => {
+      itemInfo.images = photos;
+      return getStars(id);
+    })
+    .then((stars) => {
+      itemInfo.reviews = stars;
+      return itemInfo;
+    })
+    .catch((err) => { throw err; });
+};
+
+// creates array comprised of the promises returned from calling getoneproductinfo
+const createProductCardArray = (productList) => {
+  const returnArray = [];
+  for (let i = 0; i < productList.length; i + 1) {
+    returnArray.push(getOneProductInfo(productList[i]));
+  }
+  return returnArray;
+};
+
+// gets relateditems list and returns array of objects containing info for each item
+export const getAllProductInfo = (id) => {
+  getRelatedItemsList(id)
+  // get list of related product id's
+    .then((relatedItemsList) => {
+      createProductCardArray(relatedItemsList);
+      return Promise.all(relatedItemsList)
+        .then((cardsArray) => cardsArray);
+    })
+    .catch((err) => { throw err; });
+};
