@@ -37,14 +37,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('getting new items');
-    controller.getAllProductInfo(6, 'related')
+    controller.getAllProductInfo(2, 'related')
       .then((cardsArray) => {
         console.log('array:', cardsArray);
         this.setState({
           relatedItems: cardsArray,
         });
-        console.log('new state is: ', this.state.relatedItems);
       })
       .catch((err) => console.log(err));
   }
