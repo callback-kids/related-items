@@ -16,13 +16,24 @@ export const getItemInfo = (id, cardType) => model.getItemInfo(id)
   .then((itemInfo) => formatItemInfo(itemInfo, cardType))
   .catch((err) => { console.log(err); });
 
-const formatItemPhotos = (images) => {
-
+const formatItemPhotos = (itemPhotos) => {
+  const thumbnails = [];
+  const photos = [];
+  // each item in array has a thumbnail image url and regular image url
+  itemPhotos.forEach((value) => {
+    thumbnails.push(value.thumbnail_url);
+    photos.push(value.url);
+  });
+  // return array of thumbnails and regular photos
+  return {
+    thumbnails,
+    photos,
+  };
 };
 
-const getItemPhotos = (id) => {
-
-};
+export const getItemPhotos = (id) => model.getItemPhotos(id)
+  .then((itemPhotos) => formatItemPhotos(itemPhotos))
+  .catch((err) => { console.log(err); });
 
 export const getStars = (id) => {
 

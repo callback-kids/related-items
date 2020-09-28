@@ -32,7 +32,7 @@ const App = () => {
   const [relatedItems, updatedRelatedItems] = useState('');
 
   useEffect(() => {
-    controller.getItemInfo(1, 'related')
+    controller.getItemPhotos(1)
       .then((related) => updatedRelatedItems(JSON.stringify(related)))
       .catch((err) => console.log(err));
   }, []);
