@@ -35,9 +35,29 @@ export const getItemPhotos = (id) => model.getItemPhotos(id)
   .then((itemPhotos) => formatItemPhotos(itemPhotos))
   .catch((err) => { console.log(err); });
 
-export const getStars = (id) => {
-
+const calculateStars = (starData) => {
+  // used to count total number of reviews
+  let reviewCount = 0;
+  let reviewAvg = 0;
+  const entries = Object.entries(starData);
+  // edge case, no reviews
+  if (entries.length === 0) {
+    return 0;
+  }
+  // reviews are in form of value: total number of reviews
+  entries.forEach((review) => {
+    reviewCount += review[1];
+    // multiply number of reviews by review value
+    reviewAvg += (review[0] * review[1]);
+  });
+  reviewAvg /= reviewCount;
+  return { stars: reviewAvg };
 };
+
+export const getStars = (id) => model.getReviewData(id)
+  // data comes in as number of reviews per star rating, need to calculate avg and return
+  .then((reviewData) => calculateStars(reviewData))
+  .catch((err) => console.log(err));
 
 export const getCart = (session) => model.getCart(session)
   .then((cart) => cart)

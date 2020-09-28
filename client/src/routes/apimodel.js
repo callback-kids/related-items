@@ -14,7 +14,7 @@ export const getItemPhotos = (id) => axios.get(`http://52.26.193.201:3000/produc
   .catch((err) => { throw err; });
 
 export const getReviewData = (id) => axios.get(`http://52.26.193.201:3000/reviews/${id}/meta`)
-  .then((data) => data.data)
+  .then((data) => data.data.ratings)
   .catch((err) => { throw err; });
 
 export const getCart = (session) => axios.get(`http://52.26.193.201:3000/cart/${session}`)
