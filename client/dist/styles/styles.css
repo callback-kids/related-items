@@ -131,4 +131,22 @@
   top: 40%;
   width: 100%;
 }
+table{
+  border: 1px solid #373838;
+  border-collapse: collapse;
+  background-color: #B5C7D3;
+  color: #373838;
+}
+th{
+  font-size: 25px;
+  border-bottom: 1px solid #373838;
+  padding: 10px;
+}
+td, th{
+  width: 150px;
+  text-align: center;
+}
+td{
+  font-size: 20px;
+}
 

@@ -37,11 +37,11 @@ const generateTableData = (arr1, arr2) => {
 const table = generateTableData(exampleData.features, exampleData2.features);
 
 const ComparisonTable = () => (
-  <table>
+  <table className="comparison-table">
     <tr>
-      <th>{exampleData.name}</th>
+      <th className="title-text">{exampleData.name}</th>
       <th> </th>
-      <th>{exampleData2.name}</th>
+      <th className="title-text">{exampleData2.name}</th>
     </tr>
     <tr>
       <td>{`$${exampleData.price}`}</td>
