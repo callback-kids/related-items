@@ -12,16 +12,15 @@
 }
 .product-info{
   height: 30%;
-  font-size: 2.25vh;
-  padding-left: 5%;
+  font-size: 15px;
+  padding-left: 5px;
+  padding-top: 5px;
 }
 .product-card-wrapper{
-  border: 1px solid #373838;
   height: 275px;
   width: 180px;
   flex: 1;
   margin-right: 20px;
-  border: 2px solid green;
 }
 .product-card{
   width: 100%;
@@ -58,13 +57,11 @@
 }
 .carousel-rows{
   height: 275px;
-  border: 1px solid black;
 }
 .carousel-container{
   width: 100%;
   overflow-x: hidden;
   height: 100%;
-  border: 1px solid blue;
 }
 .cards-slider-wrapper{
   display: flex;

@@ -7,9 +7,17 @@ const RelatedProducts = ({ products }) => {
   const [currentCardIndex, changeCardIndex] = useState(0);
   // subracting 3 since you want to display a total of 3-4 images no matter what
   const [scrollLength, updateScrollLength] = useState('');
+  const [offset, updateOffset] = useState('');
 
   useEffect(() => {
     updateScrollLength(products.length - 3);
+    // need to wait for a product card to mount
+    setTimeout(() => {
+      const cardWidth = document.querySelector('.product-card-wrapper');
+      const totalWidth = cardWidth.offsetWidth;
+      // 20 is the right margin between cards
+      updateOffset(totalWidth + 20);
+    }, 0.1);
   }, [products]);
 
   const goRight = () => {
@@ -31,7 +39,7 @@ const RelatedProducts = ({ products }) => {
           className="cards-slider-wrapper"
           style={{
             // moves carousel to the left relative to the container
-            transform: `translateX(-${14.5 * currentCardIndex}vw)`,
+            transform: `translateX(-${offset * currentCardIndex}px)`,
           }}
         >
           {products.map((value) => (
