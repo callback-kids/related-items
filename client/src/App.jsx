@@ -40,7 +40,6 @@ class App extends React.Component {
     console.log('getting new items');
     controller.getAllProductInfo(2, 'related')
       .then((cardsArray) => {
-        console.log('array:', cardsArray);
         this.setState({
           relatedItems: cardsArray,
         });
