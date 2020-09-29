@@ -60,6 +60,8 @@ ProductCard.propTypes = {
 
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
 
+  starSize: PropTypes.number.isRequired,
+
 };
 
 export default ProductCard;

@@ -5,9 +5,6 @@
 .title-text{
   font-family: Kumbh Sans;
 }
-.carousel-title{
-  font-size: 2vw;
-}
 .container{
   height: 100vh;
   width: 100vw;
@@ -15,33 +12,28 @@
 }
 .product-info{
   height: 30%;
-  font-size: 2.25vh;
-  padding-left: 5%;
+  font-size: 15px;
+  padding-left: 5px;
+  padding-top: 5px;
 }
 .product-card-wrapper{
-  border: 1px solid #373838;
-  height: 39vh;
-  /* max-width: 20%; */
-  min-width: 13vw;
+  height: 275px;
+  width: 180px;
   flex: 1;
-  margin-right: 1.5vw;
+  margin-right: 20px;
 }
 .product-card{
   width: 100%;
-  height: 100%;
-}
-.carousel-container{
-  width: 100%;
-  overflow-x: hidden;
   height: 100%;
 }
 .product-image{
   position: relative;
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 .product-image-container{
-  height: 75%;
+  height: 200px;
   width: 100%;
 }
 .card-button-container{
@@ -50,7 +42,7 @@
   top: 3%;
 }
 .card-button{
-  font-size: 0.65vw;
+  font-size: 10px;
   color: #373838;
   border-radius: 50%;
   border-color: #0F4C81;
@@ -60,8 +52,16 @@
   background-color: #84898C;
   border-color: #84898C;
 }
+.carousel-title{
+  font-size: 30px;
+}
 .carousel-rows{
-  height: 40vh;
+  height: 275px;
+}
+.carousel-container{
+  width: 100%;
+  overflow-x: hidden;
+  height: 100%;
 }
 .cards-slider-wrapper{
   display: flex;
@@ -74,17 +74,19 @@
   width: 100%;
 }
 .left-button{
-  left: -6%;
+  left: -35px;
 }
 .right-button{
-  right: -6%;
+  right: -35px;
 }
 .arrow-button{
   top: 45%;
   position: absolute;
   opacity: 0.5;
   border-radius: 15px;
-  font-size: 3vh;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: #84898C;
   border-color: #84898C;
   z-index: 1;
@@ -104,7 +106,7 @@
   position: relative;
   padding-left: 20%;
   display: inline-block;
-  top: 0.8vh;
+  top: 5px;
 }
 .product-price-rating{
   position: relative;
@@ -131,3 +133,4 @@
   top: 40%;
   width: 100%;
 }
+
