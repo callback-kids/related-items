@@ -145,8 +145,12 @@ th{
 td, th{
   width: 150px;
   text-align: center;
+  padding: 5px;
 }
 td{
   font-size: 20px;
+}
+.table-value{
+  font-size: 15px;
 }
 

@@ -14,11 +14,14 @@ const exampleData2 = {
 
 const generateTableData = (arr1, arr2) => {
   const output = [];
+
   arr1.forEach((item) => {
     output.push({ feature: item.feature, valueOne: item.value, valueTwo: null });
   });
+
   arr2.forEach((item) => {
     let featureFound = false;
+
     // check if feature exists already
     output.forEach((feature, index) => {
       if (item.feature === feature.feature) {
@@ -26,11 +29,13 @@ const generateTableData = (arr1, arr2) => {
         featureFound = true;
       }
     });
+
     // if feature doesn't exist add new item to output array
     if (!featureFound) {
       output.push({ feature: item.feature, valueOne: null, valueTwo: item.value });
     }
   });
+
   return output;
 };
 
@@ -44,16 +49,16 @@ const ComparisonTable = () => (
       <th className="title-text">{exampleData2.name}</th>
     </tr>
     <tr>
-      <td>{`$${exampleData.price}`}</td>
+      <td className="table-value">{`$${exampleData.price}`}</td>
       <td>Price</td>
-      <td>{`$${exampleData2.price}`}</td>
+      <td className="table-value">{`$${exampleData2.price}`}</td>
     </tr>
     {
       table.map((item) => (
         <tr>
-          <td>{item.valueOne}</td>
+          <td className="table-value">{item.valueOne}</td>
           <td>{item.feature}</td>
-          <td>{item.valueTwo}</td>
+          <td className="table-value">{item.valueTwo}</td>
         </tr>
       ))
     }

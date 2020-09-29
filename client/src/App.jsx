@@ -74,9 +74,7 @@ class App extends React.Component {
         </Row>
         <Row>
           <Col xs={0} sm={2} />
-          <Col xs={12} sm={8}>
-            <ComparisonTable />
-          </Col>
+          <Col xs={12} sm={8} />
           <Col xs={0} sm={2} />
         </Row>
       </Container>
