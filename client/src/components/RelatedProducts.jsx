@@ -6,18 +6,20 @@ import ProductCard from './product_card/ProductCard';
 const RelatedProducts = ({ products }) => {
   const [currentCardIndex, changeCardIndex] = useState(0);
   // subracting 3 since you want to display a total of 3-4 images no matter what
-  const [scrollLength, updateScrollLength] = useState('');
+  const [scrollLength, updateScrollLength] = useState(0);
   const [offset, updateOffset] = useState(0);
 
   useEffect(() => {
-    updateScrollLength(products.length - 3);
     // need to wait for a product card to mount
     setTimeout(() => {
-      const cardWidth = document.querySelector('.product-card-wrapper');
-      const totalWidth = cardWidth.offsetWidth;
+      const cardWidth = document.querySelector('.product-card-wrapper').offsetWidth;
+      const carouselWidth = document.querySelector('.carousel-container').clientWidth;
+      const scrollCards = Math.floor(carouselWidth / (cardWidth + 20));
+      // update scroll length to respond to number of cards relative to carousel width
+      updateScrollLength(products.length - scrollCards);
       // 20 is the right margin between cards
-      updateOffset(totalWidth + 20);
-    }, 0.1);
+      updateOffset(cardWidth + 20);
+    }, 0.5);
   }, [products]);
 
   const goRight = () => {
