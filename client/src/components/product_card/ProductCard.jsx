@@ -5,7 +5,7 @@ import ProductInfo from './ProductInfo';
 import ProductImage from './ProductImage';
 import ThumbnailCarousel from './ThumbnailCarousel';
 
-const ProductCard = ({ data, reviews, images, starSize }) => {
+const ProductCard = ({ data, reviews, images }) => {
   const [hover, changeHover] = useState(false);
   const [mainImageIndex, changeMainImageIndex] = useState(0);
   // flips state of hover on mouse enter/exit
@@ -38,7 +38,7 @@ const ProductCard = ({ data, reviews, images, starSize }) => {
       <Card className="product-card">
         <ProductImage mainImage={images[mainImageIndex]} productData={data} />
         {hover ? <ThumbnailCarousel click={handleArrowClick} /> : ''}
-        <ProductInfo data={data} reviews={reviews} starSize={starSize} />
+        <ProductInfo data={data} reviews={reviews} />
       </Card>
     </div>
 
