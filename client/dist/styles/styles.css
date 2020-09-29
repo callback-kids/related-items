@@ -42,7 +42,7 @@
   top: 3%;
 }
 .card-button{
-  font-size: 0.65vw;
+  font-size: 10px;
   color: #373838;
   border-radius: 50%;
   border-color: #0F4C81;
@@ -74,17 +74,19 @@
   width: 100%;
 }
 .left-button{
-  left: -6%;
+  left: -35px;
 }
 .right-button{
-  right: -6%;
+  right: -35px;
 }
 .arrow-button{
   top: 45%;
   position: absolute;
   opacity: 0.5;
   border-radius: 15px;
-  font-size: 3vh;
+  font-size: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: #84898C;
   border-color: #84898C;
   z-index: 1;
