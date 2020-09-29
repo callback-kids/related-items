@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Outfit from './components/Outfit';
 import RelatedProducts from './components/RelatedProducts';
 import * as controller from './routes/apicontroller';
+import ComparisonTable from './components/product_card/ComparisonTable';
 
 const data = {
   cardType: 'related',
@@ -38,9 +39,8 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log('getting new items');
-    controller.getAllProductInfo(2, 'related')
+    controller.getAllProductInfo(3, 'related')
       .then((cardsArray) => {
-        console.log('array:', cardsArray);
         this.setState({
           relatedItems: cardsArray,
         });
@@ -69,6 +69,13 @@ class App extends React.Component {
           <Col xs={0} sm={2} />
           <Col xs={12} sm={8}>
             <Outfit />
+          </Col>
+          <Col xs={0} sm={2} />
+        </Row>
+        <Row>
+          <Col xs={0} sm={2} />
+          <Col xs={12} sm={8}>
+            <ComparisonTable />
           </Col>
           <Col xs={0} sm={2} />
         </Row>

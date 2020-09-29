@@ -6,8 +6,6 @@
   font-family: Kumbh Sans;
 }
 .container{
-  height: 100vh;
-  width: 100vw;
   border: 2px solid black;
 }
 .product-info{
