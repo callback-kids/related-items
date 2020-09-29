@@ -7,7 +7,7 @@ const RelatedProducts = ({ products }) => {
   const [currentCardIndex, changeCardIndex] = useState(0);
   // subracting 3 since you want to display a total of 3-4 images no matter what
   const [scrollLength, updateScrollLength] = useState('');
-  const [offset, updateOffset] = useState('');
+  const [offset, updateOffset] = useState(0);
 
   useEffect(() => {
     updateScrollLength(products.length - 3);
@@ -47,6 +47,7 @@ const RelatedProducts = ({ products }) => {
               data={value.data}
               images={value.images.thumbnails}
               reviews={value.reviews}
+              starSize={offset}
             />
           ))}
         </div>
