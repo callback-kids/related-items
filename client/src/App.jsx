@@ -44,7 +44,6 @@ class App extends React.Component {
         this.setState({
           relatedItems: cardsArray,
         });
-        console.log('new state is: ', this.state.relatedItems);
       })
       .catch((err) => console.log(err));
   }
