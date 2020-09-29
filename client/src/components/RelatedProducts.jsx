@@ -5,8 +5,8 @@ import ProductCard from './product_card/ProductCard';
 
 const RelatedProducts = ({ products }) => {
   const [currentCardIndex, changeCardIndex] = useState(0);
-  // subracting 3 since you want to display a total of 3-4 images no matter what
-  const [scrollLength, updateScrollLength] = useState(0);
+  // used to automatically render a right arrow on mount
+  const [scrollLength, updateScrollLength] = useState(4);
   const [offset, updateOffset] = useState(0);
 
   useEffect(() => {
