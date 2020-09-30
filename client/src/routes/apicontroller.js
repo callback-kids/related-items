@@ -77,7 +77,7 @@ export const getCart = (session) => model.getCart(session)
   .catch((err) => console.log(err));
 
 // retrieves and formats info for one product card
-const getOneProductInfo = (id, cardType) => {
+export const getOneProductInfo = (id, cardType) => {
   const itemInfo = {};
   return getItemInfo(id)
     .then((info) => {

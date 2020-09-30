@@ -33,6 +33,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      featuredProductData: {},
       relatedItems: [],
     };
   }
@@ -43,6 +44,12 @@ class App extends React.Component {
       .then((cardsArray) => {
         this.setState({
           relatedItems: cardsArray,
+        });
+        return controller.getOneProductInfo(4, 'related');
+      })
+      .then((productData) => {
+        this.setState({
+          featuredProductData: productData,
         });
       })
       .catch((err) => console.log(err));
