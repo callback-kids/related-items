@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
+import AddItem from './outfit_card/AddItem';
 import OutfitCard from './outfit_card/OutfitCard';
 
 const Outfit = ({ outfit }) => {
@@ -21,7 +22,7 @@ const Outfit = ({ outfit }) => {
       updateScrollLength(outfit.length - scrollCards);
       // 20 is the right margin between cards
       updateOffset(cardWidth + 20);
-    }, 0.5);
+    }, 0.1);
   }, [outfit]);
 
   const goRight = () => {
@@ -46,6 +47,7 @@ const Outfit = ({ outfit }) => {
             transform: `translateX(-${offset * currentCardIndex}px)`,
           }}
         >
+          <AddItem />
           {outfit ? outfit.map((value) => (
             <OutfitCard
               data={value.data}
