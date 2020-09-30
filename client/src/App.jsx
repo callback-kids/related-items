@@ -39,7 +39,7 @@ class App extends React.Component {
 
   componentDidMount() {
     console.log('getting new items');
-    controller.getAllProductInfo(3, 'related')
+    controller.getAllProductInfo(4, 'related')
       .then((cardsArray) => {
         this.setState({
           relatedItems: cardsArray,

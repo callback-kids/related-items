@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const exampleData = {
   name: 'product 1',
   price: 50,
-  features: [{"feature":"Fabric","value":"100% Cotton"},{"feature":"Cut","value":"Skinny"}, {"feature":"testSame","value":"same"}, {"feature":"testOne","value":"one"}],
+  features: [{ feature: 'Fabric', value: '100% Cotton' }, { feature: 'Cut', value: 'Skinny' }, { feature: 'testSame', value: 'same' }, { feature: 'testOne', value: 'one' }],
 };
 
 const exampleData2 = {
   name: 'product 2',
   price: 75,
-  features: [{"feature":"Fabric","value":"99% Cotton 1% Elastic"},{"feature":"Cut","value":"Loose"}, {"feature":"testSame","value":"same"}, {"feature":"testTwo","value":"two"}],
+  features: [{ feature: 'Fabric', value: '99% Cotton 1% Elastic' }, { feature: 'Cut', value: 'Loose' }, { feature: 'testSame', value: 'same' }, { feature: 'testTwo', value: 'two' }],
 };
 
 const generateTableData = (arr1, arr2) => {
@@ -41,28 +42,50 @@ const generateTableData = (arr1, arr2) => {
 
 const table = generateTableData(exampleData.features, exampleData2.features);
 
-const ComparisonTable = () => (
-  <table className="comparison-table">
-    <tr>
-      <th className="title-text">{exampleData.name}</th>
-      <th> </th>
-      <th className="title-text">{exampleData2.name}</th>
-    </tr>
-    <tr>
-      <td className="table-value">{`$${exampleData.price}`}</td>
-      <td>Price</td>
-      <td className="table-value">{`$${exampleData2.price}`}</td>
-    </tr>
-    {
-      table.map((item) => (
-        <tr>
-          <td className="table-value">{item.valueOne}</td>
-          <td>{item.feature}</td>
-          <td className="table-value">{item.valueTwo}</td>
-        </tr>
-      ))
-    }
-  </table>
-);
+const ComparisonTable = ({ productData }) => {
+  const [tableData, updateTable] = useState([]);
+
+  useEffect(() => {
+    const newTable = generateTableData(productData.features, exampleData2.features);
+    updateTable(newTable);
+  }, []);
+
+  return (
+    <table className="comparison-table">
+      <tr>
+        <th className="title-text">{productData.name}</th>
+        <th> </th>
+        <th className="title-text">{exampleData2.name}</th>
+      </tr>
+      <tr>
+        <td className="table-value">{`$${productData.price}`}</td>
+        <td>Price</td>
+        <td className="table-value">{`$${exampleData2.price}`}</td>
+      </tr>
+      {
+        tableData.map((item) => (
+          <tr>
+            <td className="table-value">{item.valueOne}</td>
+            <td>{item.feature}</td>
+            <td className="table-value">{item.valueTwo}</td>
+          </tr>
+        ))
+      }
+    </table>
+  );
+};
+
+ComparisonTable.propTypes = {
+  productData: PropTypes.shape({
+    cardType: PropTypes.string.isRequired,
+    category: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number,
+    features: PropTypes.arrayOf(PropTypes.shape({
+      feature: PropTypes.string,
+      value: PropTypes.string,
+    })),
+  }).isRequired,
+};
 
 export default ComparisonTable;

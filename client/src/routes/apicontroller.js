@@ -1,9 +1,7 @@
 import * as model from './apimodel';
 
 export const getRelatedItemsList = (id) => model.getRelatedItems(id)
-  .then((items) => {
-    return items;
-  })
+  .then((items) => items)
   .catch((err) => console.log(err));
 
 const formatItemInfo = (itemInfo, cardType) => {
@@ -13,6 +11,7 @@ const formatItemInfo = (itemInfo, cardType) => {
     category: itemInfo.category,
     name: itemInfo.name,
     price: parseInt(itemInfo.default_price, 10),
+    features: itemInfo.features,
   };
   return formattedItemInfo;
 };

@@ -21,7 +21,7 @@ const ProductImage = ({ mainImage, productData }) => {
       </div>
       <Overlay target={target.current} show={showOverlay} placement="bottom">
         <div className="table-overlay">
-          <ComparisonTable />
+          <ComparisonTable productData={productData} />
         </div>
       </Overlay>
     </div>
@@ -37,6 +37,10 @@ ProductImage.propTypes = {
     category: PropTypes.string,
     name: PropTypes.string.isRequired,
     price: PropTypes.number,
+    features: PropTypes.arrayOf(PropTypes.shape({
+      feature: PropTypes.string,
+      value: PropTypes.string,
+    })),
   }).isRequired,
 
 };
