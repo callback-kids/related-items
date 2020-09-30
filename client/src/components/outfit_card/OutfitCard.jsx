@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
-import ProductInfo from './ProductInfo';
-import ProductImage from './ProductImage';
-import ThumbnailCarousel from './ThumbnailCarousel';
+import ProductInfo from '../product_card/ProductInfo';
+import OutfitImage from './OutfitImage';
+import ThumbnailCarousel from '../product_card/ThumbnailCarousel';
 
-const ProductCard = ({ data, reviews, images, productCompare }) => {
+const OutfitCard = ({ data, reviews, images, remove }) => {
   const [hover, changeHover] = useState(false);
   const [mainImageIndex, changeMainImageIndex] = useState(0);
   // flips state of hover on mouse enter/exit
@@ -36,10 +36,10 @@ const ProductCard = ({ data, reviews, images, productCompare }) => {
 
     <div onMouseEnter={hoverHandler} onMouseLeave={hoverHandler} className="product-card-wrapper">
       <Card className="product-card">
-        <ProductImage
+        <OutfitImage
           mainImage={images[mainImageIndex]}
           productData={data}
-          productCompare={productCompare}
+          remove={remove}
         />
         {hover ? <ThumbnailCarousel click={handleArrowClick} /> : ''}
         <ProductInfo data={data} reviews={reviews} />
@@ -49,7 +49,7 @@ const ProductCard = ({ data, reviews, images, productCompare }) => {
   );
 };
 
-ProductCard.propTypes = {
+OutfitCard.propTypes = {
 
   data: PropTypes.shape({
     cardType: PropTypes.string.isRequired,
@@ -68,17 +68,8 @@ ProductCard.propTypes = {
 
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
 
-  productCompare: PropTypes.shape({
-    cardType: PropTypes.string.isRequired,
-    category: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number,
-    features: PropTypes.arrayOf(PropTypes.shape({
-      feature: PropTypes.string,
-      value: PropTypes.string,
-    })),
-  }).isRequired,
+  remove: PropTypes.func.isRequired,
 
 };
 
-export default ProductCard;
+export default OutfitCard;

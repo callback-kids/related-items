@@ -7,6 +7,7 @@
 }
 .container{
   border: 2px solid black;
+  height: 100%;
 }
 .product-info{
   height: 30%;
@@ -154,6 +155,28 @@ td{
 }
 .table-value{
   font-size: 15px;
+}
+.outfit-button-position{
+  position: absolute;
+  font-size: 100px;
+  /* border-radius: 25px; */
+  height: 100px;
+  width: 90px;
+  top: 90px;
+  left: 50px;
+  text-align: start;
+}
+.outfit-add-button{
+  background-color: transparent;
+  border-color: transparent;
+  outline: none !important;
+  box-shadow: none !important;
+  /* border-color: transparent; */
+}
+.outfit-add-button:hover, .outfit-add-button:focus, .outfit-add-button:active:focus{
+  background-color: transparent;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 
