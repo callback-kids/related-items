@@ -5,7 +5,7 @@ import ProductInfo from './ProductInfo';
 import ProductImage from './ProductImage';
 import ThumbnailCarousel from './ThumbnailCarousel';
 
-const ProductCard = ({ data, reviews, images }) => {
+const ProductCard = ({ data, reviews, images, productCompare }) => {
   const [hover, changeHover] = useState(false);
   const [mainImageIndex, changeMainImageIndex] = useState(0);
   // flips state of hover on mouse enter/exit
@@ -36,7 +36,7 @@ const ProductCard = ({ data, reviews, images }) => {
 
     <div onMouseEnter={hoverHandler} onMouseLeave={hoverHandler} className="product-card-wrapper">
       <Card className="product-card">
-        <ProductImage mainImage={images[mainImageIndex]} productData={data} />
+        <ProductImage mainImage={images[mainImageIndex]} productData={data} productCompare={productCompare} />
         {hover ? <ThumbnailCarousel click={handleArrowClick} /> : ''}
         <ProductInfo data={data} reviews={reviews} />
       </Card>
@@ -65,6 +65,17 @@ ProductCard.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   starSize: PropTypes.number.isRequired,
+
+  productCompare: PropTypes.shape({
+    cardType: PropTypes.string.isRequired,
+    category: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number,
+    features: PropTypes.arrayOf(PropTypes.shape({
+      feature: PropTypes.string,
+      value: PropTypes.string,
+    })),
+  }).isRequired,
 
 };
 

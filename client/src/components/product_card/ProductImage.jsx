@@ -5,7 +5,7 @@ import Image from 'react-bootstrap/Image';
 import ActionButton from './ActionButton';
 import ComparisonTable from './ComparisonTable';
 
-const ProductImage = ({ mainImage, productData }) => {
+const ProductImage = ({ mainImage, productData, productCompare }) => {
   const [showOverlay, toggleOverlay] = useState(false);
   const target = useRef(null);
 
@@ -21,7 +21,7 @@ const ProductImage = ({ mainImage, productData }) => {
       </div>
       <Overlay target={target.current} show={showOverlay} placement="bottom">
         <div className="table-overlay">
-          <ComparisonTable productData={productData} />
+          <ComparisonTable productData={productData} productCompare={productCompare} />
         </div>
       </Overlay>
     </div>
@@ -33,6 +33,17 @@ ProductImage.propTypes = {
   mainImage: PropTypes.string.isRequired,
 
   productData: PropTypes.shape({
+    cardType: PropTypes.string.isRequired,
+    category: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number,
+    features: PropTypes.arrayOf(PropTypes.shape({
+      feature: PropTypes.string,
+      value: PropTypes.string,
+    })),
+  }).isRequired,
+
+  productCompare: PropTypes.shape({
     cardType: PropTypes.string.isRequired,
     category: PropTypes.string,
     name: PropTypes.string.isRequired,

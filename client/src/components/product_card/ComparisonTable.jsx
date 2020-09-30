@@ -42,11 +42,11 @@ const generateTableData = (arr1, arr2) => {
 
 const table = generateTableData(exampleData.features, exampleData2.features);
 
-const ComparisonTable = ({ productData }) => {
+const ComparisonTable = ({ productData, productCompare }) => {
   const [tableData, updateTable] = useState([]);
 
   useEffect(() => {
-    const newTable = generateTableData(productData.features, exampleData2.features);
+    const newTable = generateTableData(productData.features, productCompare.features);
     updateTable(newTable);
   }, []);
 
@@ -55,12 +55,12 @@ const ComparisonTable = ({ productData }) => {
       <tr>
         <th className="title-text">{productData.name}</th>
         <th> </th>
-        <th className="title-text">{exampleData2.name}</th>
+        <th className="title-text">{productCompare.name}</th>
       </tr>
       <tr>
         <td className="table-value">{`$${productData.price}`}</td>
         <td>Price</td>
-        <td className="table-value">{`$${exampleData2.price}`}</td>
+        <td className="table-value">{`$${productCompare.price}`}</td>
       </tr>
       {
         tableData.map((item) => (
@@ -86,6 +86,18 @@ ComparisonTable.propTypes = {
       value: PropTypes.string,
     })),
   }).isRequired,
+
+  productCompare: PropTypes.shape({
+    cardType: PropTypes.string.isRequired,
+    category: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number,
+    features: PropTypes.arrayOf(PropTypes.shape({
+      feature: PropTypes.string,
+      value: PropTypes.string,
+    })),
+  }).isRequired,
+
 };
 
 export default ComparisonTable;
