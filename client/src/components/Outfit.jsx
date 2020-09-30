@@ -57,8 +57,11 @@ const Outfit = ({ outfit, currentItem }) => {
   };
 
   return (
+
     <div className="carousel-container">
+
       <div className="cards-slider">
+
         <div
           className="cards-slider-wrapper"
           style={{
@@ -76,9 +79,12 @@ const Outfit = ({ outfit, currentItem }) => {
             />
           ))}
         </div>
+
       </div>
+
       {currentCardIndex > 0 ? <Button onClick={goLeft} className="arrow-button left-button" type="button">⇦</Button> : ''}
       {currentCardIndex < scrollLength ? <Button onClick={goRight} className="arrow-button right-button" type="button">⇨</Button> : ''}
+
     </div>
   );
 };
