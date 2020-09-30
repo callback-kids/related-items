@@ -9,8 +9,11 @@ const OutfitCard = ({ data, reviews, images, remove }) => {
   const [hover, changeHover] = useState(false);
   const [mainImageIndex, changeMainImageIndex] = useState(0);
   // flips state of hover on mouse enter/exit
-  const hoverHandler = () => {
-    changeHover(!hover);
+  const hideArrows = () => {
+    changeHover(false);
+  };
+  const showArrows = () => {
+    changeHover(true);
   };
 
   // used to change the card image on left or right arrow click
@@ -34,7 +37,7 @@ const OutfitCard = ({ data, reviews, images, remove }) => {
 
   return (
 
-    <div onMouseEnter={hoverHandler} onMouseLeave={hoverHandler} className="product-card-wrapper">
+    <div onMouseEnter={showArrows} onMouseLeave={hideArrows} className="product-card-wrapper">
       <Card className="product-card">
         <OutfitImage
           mainImage={images[mainImageIndex]}

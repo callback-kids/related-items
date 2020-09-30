@@ -9,21 +9,29 @@ const ProductImage = ({ mainImage, productData, productCompare }) => {
   const [showOverlay, toggleOverlay] = useState(false);
   const target = useRef(null);
 
-  const overlayHandler = () => {
-    toggleOverlay(!showOverlay);
+  const displayOverlay = () => {
+    toggleOverlay(true);
+  };
+  const hideOverlay = () => {
+    toggleOverlay(false);
   };
 
   return (
+
     <div className="product-image-container">
+
       <Image className="product-image" src={mainImage} alt={productData.name} />
-      <div ref={target} onMouseEnter={overlayHandler} onMouseLeave={overlayHandler} className="card-button-container">
+
+      <div ref={target} onMouseEnter={displayOverlay} onMouseLeave={hideOverlay} className="card-button-container">
         <ActionButton cardType={productData.cardType} />
       </div>
+
       <Overlay target={target.current} show={showOverlay} placement="bottom">
         <div className="table-overlay">
           <ComparisonTable productData={productData} productCompare={productCompare} />
         </div>
       </Overlay>
+
     </div>
   );
 };

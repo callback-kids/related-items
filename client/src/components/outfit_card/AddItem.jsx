@@ -4,11 +4,17 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 const AddItem = ({ addItem }) => (
+
   <div className="product-card-wrapper">
+
     <Card className="product-card">
+
+      {/* i is the icon image, button is used for the on click function */}
       <i className="fas fa-plus outfit-button-position" />
       <Button variant="outline-light" onClick={addItem} className="outfit-add-button outfit-button-position" />
+
     </Card>
+
   </div>
 );
 
