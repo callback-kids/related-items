@@ -36,7 +36,11 @@ const ProductCard = ({ data, reviews, images, productCompare }) => {
 
     <div onMouseEnter={hoverHandler} onMouseLeave={hoverHandler} className="product-card-wrapper">
       <Card className="product-card">
-        <ProductImage mainImage={images[mainImageIndex]} productData={data} productCompare={productCompare} />
+        <ProductImage
+          mainImage={images[mainImageIndex]}
+          productData={data}
+          productCompare={productCompare}
+        />
         {hover ? <ThumbnailCarousel click={handleArrowClick} /> : ''}
         <ProductInfo data={data} reviews={reviews} />
       </Card>

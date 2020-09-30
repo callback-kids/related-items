@@ -39,15 +39,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('getting new items');
     // gets info for related products
-    controller.getAllProductInfo(3, 'related')
+    controller.getAllProductInfo(55, 'related')
       .then((cardsArray) => {
         this.setState({
           relatedItems: cardsArray,
         });
         // get info for main product, used in comparison table
-        return controller.getOneProductInfo(3, 'related');
+        return controller.getOneProductInfo(5, 'related');
       })
       // gets info for featured product
       .then((productData) => {
@@ -71,7 +70,10 @@ class App extends React.Component {
         <Row className="carousel-rows">
           <Col xs={1} sm={2} />
           <Col xs={10} sm={8}>
-            <RelatedProducts products={this.state.relatedItems} productCompare={this.state.featuredProductData.data} />
+            <RelatedProducts
+              products={this.state.relatedItems}
+              productCompare={this.state.featuredProductData.data}
+            />
           </Col>
           <Col xs={1} sm={2} />
         </Row>
