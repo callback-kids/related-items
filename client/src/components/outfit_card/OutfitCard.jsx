@@ -5,7 +5,7 @@ import ProductInfo from '../product_card/ProductInfo';
 import OutfitImage from './OutfitImage';
 import ThumbnailCarousel from '../product_card/ThumbnailCarousel';
 
-const OutfitCard = ({ data, reviews, images }) => {
+const OutfitCard = ({ data, reviews, images, remove }) => {
   const [hover, changeHover] = useState(false);
   const [mainImageIndex, changeMainImageIndex] = useState(0);
   // flips state of hover on mouse enter/exit
@@ -39,6 +39,7 @@ const OutfitCard = ({ data, reviews, images }) => {
         <OutfitImage
           mainImage={images[mainImageIndex]}
           productData={data}
+          remove={remove}
         />
         {hover ? <ThumbnailCarousel click={handleArrowClick} /> : ''}
         <ProductInfo data={data} reviews={reviews} />
@@ -66,6 +67,8 @@ OutfitCard.propTypes = {
   }).isRequired,
 
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
+
+  remove: PropTypes.func.isRequired,
 
 };
 

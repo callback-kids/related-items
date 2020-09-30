@@ -4,6 +4,27 @@ import Button from 'react-bootstrap/Button';
 import AddItem from './outfit_card/AddItem';
 import OutfitCard from './outfit_card/OutfitCard';
 
+const data = {
+  cardType: 'outfit',
+  category: 'Shoes',
+  name: 'blue suede',
+  price: 50,
+};
+
+const reviews = {
+  stars: 3.5,
+};
+
+const images = {
+  thumbnails: [
+    'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+    'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
+    'https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80',
+    'https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'],
+};
+
+const card = { data, reviews, images };
+
 const Outfit = ({ outfit, currentItem }) => {
   // need state for outfit to add items later
   const [currentOutfit, updateOutfit] = useState(outfit);
@@ -24,7 +45,7 @@ const Outfit = ({ outfit, currentItem }) => {
       // 20 is the right margin between cards
       updateOffset(cardWidth + 20);
     }, 0.1);
-  }, [currentOutfit]);
+  }, [outfit, currentOutfit]);
 
   const goRight = () => {
     if (currentCardIndex < scrollLength) {
@@ -44,6 +65,12 @@ const Outfit = ({ outfit, currentItem }) => {
     updateOutfit(newOutfit);
   };
 
+  const removeFromOutfit = (name) => {
+    // find items with same name in currentOutfit and remove
+    const newOutfit = currentOutfit.filter((item) => item.data.name !== name);
+    updateOutfit(newOutfit);
+  };
+
   return (
     <div className="carousel-container">
       <div className="cards-slider">
@@ -60,6 +87,7 @@ const Outfit = ({ outfit, currentItem }) => {
               data={value.data}
               images={value.images.thumbnails}
               reviews={value.reviews}
+              remove={removeFromOutfit}
             />
           ))}
         </div>

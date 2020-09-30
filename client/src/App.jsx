@@ -27,7 +27,7 @@ const images = {
 
 const card = { data, reviews, images };
 
-const cards = [card, card, card];
+const cards = [];
 
 class App extends React.Component {
   constructor() {
@@ -47,7 +47,7 @@ class App extends React.Component {
           relatedItems: cardsArray,
         });
         // get info for main product, used in comparison table
-        return controller.getOneProductInfo(5, 'related');
+        return controller.getOneProductInfo(4, 'outfit');
       })
       // gets info for featured product
       .then((productData) => {
