@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import ProductCard from './product_card/ProductCard';
 
-const RelatedProducts = ({ products }) => {
+const RelatedProducts = ({ products, productCompare }) => {
   const [currentCardIndex, changeCardIndex] = useState(0);
   // used to automatically render a right arrow on mount
   const [scrollLength, updateScrollLength] = useState(4);
@@ -49,6 +49,7 @@ const RelatedProducts = ({ products }) => {
               data={value.data}
               images={value.images.thumbnails}
               reviews={value.reviews}
+              productCompare={productCompare}
               starSize={offset}
             />
           ))}
@@ -63,6 +64,17 @@ const RelatedProducts = ({ products }) => {
 RelatedProducts.propTypes = {
 
   products: PropTypes.arrayOf(PropTypes.object).isRequired,
+
+  productCompare: PropTypes.shape({
+    cardType: PropTypes.string.isRequired,
+    category: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number,
+    features: PropTypes.arrayOf(PropTypes.shape({
+      feature: PropTypes.string,
+      value: PropTypes.string,
+    })),
+  }).isRequired,
 
 };
 

@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Outfit from './components/Outfit';
 import RelatedProducts from './components/RelatedProducts';
 import * as controller from './routes/apicontroller';
+import ComparisonTable from './components/product_card/ComparisonTable';
 
 const data = {
   cardType: 'related',
@@ -32,16 +33,25 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      featuredProductData: {},
       relatedItems: [],
     };
   }
 
   componentDidMount() {
-    console.log('getting new items');
-    controller.getAllProductInfo(2, 'related')
+    // gets info for related products
+    controller.getAllProductInfo(55, 'related')
       .then((cardsArray) => {
         this.setState({
           relatedItems: cardsArray,
+        });
+        // get info for main product, used in comparison table
+        return controller.getOneProductInfo(5, 'related');
+      })
+      // gets info for featured product
+      .then((productData) => {
+        this.setState({
+          featuredProductData: productData,
         });
       })
       .catch((err) => console.log(err));
@@ -60,7 +70,10 @@ class App extends React.Component {
         <Row className="carousel-rows">
           <Col xs={1} sm={2} />
           <Col xs={10} sm={8}>
-            <RelatedProducts products={this.state.relatedItems} />
+            <RelatedProducts
+              products={this.state.relatedItems}
+              productCompare={this.state.featuredProductData.data}
+            />
           </Col>
           <Col xs={1} sm={2} />
         </Row>
@@ -69,6 +82,11 @@ class App extends React.Component {
           <Col xs={12} sm={8}>
             <Outfit />
           </Col>
+          <Col xs={0} sm={2} />
+        </Row>
+        <Row>
+          <Col xs={0} sm={2} />
+          <Col xs={12} sm={8} />
           <Col xs={0} sm={2} />
         </Row>
       </Container>

@@ -6,8 +6,6 @@
   font-family: Kumbh Sans;
 }
 .container{
-  height: 100vh;
-  width: 100vw;
   border: 2px solid black;
 }
 .product-info{
@@ -54,6 +52,8 @@
 }
 .carousel-title{
   font-size: 30px;
+  border-bottom: 2px solid #84898C;
+  margin-bottom: 10px;
 }
 .carousel-rows{
   height: 275px;
@@ -133,4 +133,27 @@
   top: 40%;
   width: 100%;
 }
+table{
+  border: 1px solid #373838;
+  border-collapse: collapse;
+  background-color: #B5C7D3;
+  color: #373838;
+}
+th{
+  font-size: 25px;
+  border-bottom: 1px solid #373838;
+  padding: 10px;
+}
+td, th{
+  width: 150px;
+  text-align: center;
+  padding: 5px;
+}
+td{
+  font-size: 20px;
+}
+.table-value{
+  font-size: 15px;
+}
+
 
