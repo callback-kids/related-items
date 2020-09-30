@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
-import ProductCard from './product_card/ProductCard';
+import OutfitCard from './outfit_card/OutfitCard';
 
-const Outfit = ({ products, productCompare }) => {
+const Outfit = ({ outfit }) => {
+  // need state for outfit to add items later
+  const [currentOutfit, updateOutfit] = useState([]);
   const [currentCardIndex, changeCardIndex] = useState(0);
   // used to automatically render a right arrow on mount
   const [scrollLength, updateScrollLength] = useState(4);
@@ -16,11 +18,11 @@ const Outfit = ({ products, productCompare }) => {
       const carouselWidth = document.querySelector('.carousel-container').clientWidth;
       const scrollCards = Math.floor(carouselWidth / (cardWidth + 20));
       // update scroll length to respond to number of cards relative to carousel width
-      updateScrollLength(products.length - scrollCards);
+      updateScrollLength(outfit.length - scrollCards);
       // 20 is the right margin between cards
       updateOffset(cardWidth + 20);
     }, 0.5);
-  }, [products]);
+  }, [outfit]);
 
   const goRight = () => {
     if (currentCardIndex < scrollLength) {
@@ -44,15 +46,14 @@ const Outfit = ({ products, productCompare }) => {
             transform: `translateX(-${offset * currentCardIndex}px)`,
           }}
         >
-          {products.map((value) => (
-            <ProductCard
+          {outfit ? outfit.map((value) => (
+            <OutfitCard
               data={value.data}
               images={value.images.thumbnails}
               reviews={value.reviews}
-              productCompare={productCompare}
-              starSize={offset}
             />
-          ))}
+          ))
+            : 'test'}
         </div>
       </div>
       {currentCardIndex > 0 ? <Button onClick={goLeft} className="arrow-button left-button" type="button">⇦</Button> : ''}
@@ -63,18 +64,7 @@ const Outfit = ({ products, productCompare }) => {
 
 Outfit.propTypes = {
 
-  products: PropTypes.arrayOf(PropTypes.object).isRequired,
-
-  productCompare: PropTypes.shape({
-    cardType: PropTypes.string.isRequired,
-    category: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number,
-    features: PropTypes.arrayOf(PropTypes.shape({
-      feature: PropTypes.string,
-      value: PropTypes.string,
-    })),
-  }).isRequired,
+  outfit: PropTypes.arrayOf(PropTypes.object).isRequired,
 
 };
 
