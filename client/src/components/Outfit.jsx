@@ -4,9 +4,9 @@ import Button from 'react-bootstrap/Button';
 import AddItem from './outfit_card/AddItem';
 import OutfitCard from './outfit_card/OutfitCard';
 
-const Outfit = ({ outfit }) => {
+const Outfit = ({ outfit, currentItem }) => {
   // need state for outfit to add items later
-  const [currentOutfit, updateOutfit] = useState([]);
+  const [currentOutfit, updateOutfit] = useState(outfit);
   const [currentCardIndex, changeCardIndex] = useState(0);
   // used to automatically render a right arrow on mount
   const [scrollLength, updateScrollLength] = useState(4);
@@ -19,11 +19,12 @@ const Outfit = ({ outfit }) => {
       const carouselWidth = document.querySelector('.carousel-container').clientWidth;
       const scrollCards = Math.floor(carouselWidth / (cardWidth + 20));
       // update scroll length to respond to number of cards relative to carousel width
-      updateScrollLength(outfit.length - scrollCards);
+      // add 1 here because you always have the add to outfit card
+      updateScrollLength((currentOutfit.length + 1) - scrollCards);
       // 20 is the right margin between cards
       updateOffset(cardWidth + 20);
     }, 0.1);
-  }, [outfit]);
+  }, [currentOutfit]);
 
   const goRight = () => {
     if (currentCardIndex < scrollLength) {
@@ -37,6 +38,12 @@ const Outfit = ({ outfit }) => {
     }
   };
 
+  const addToOutfit = () => {
+    const newOutfit = currentOutfit.slice();
+    newOutfit.push(currentItem);
+    updateOutfit(newOutfit);
+  };
+
   return (
     <div className="carousel-container">
       <div className="cards-slider">
@@ -47,15 +54,14 @@ const Outfit = ({ outfit }) => {
             transform: `translateX(-${offset * currentCardIndex}px)`,
           }}
         >
-          <AddItem />
-          {outfit ? outfit.map((value) => (
+          <AddItem addItem={addToOutfit} />
+          {currentOutfit.map((value) => (
             <OutfitCard
               data={value.data}
               images={value.images.thumbnails}
               reviews={value.reviews}
             />
-          ))
-            : 'test'}
+          ))}
         </div>
       </div>
       {currentCardIndex > 0 ? <Button onClick={goLeft} className="arrow-button left-button" type="button">⇦</Button> : ''}
@@ -67,6 +73,17 @@ const Outfit = ({ outfit }) => {
 Outfit.propTypes = {
 
   outfit: PropTypes.arrayOf(PropTypes.object).isRequired,
+
+  currentItem: PropTypes.shape({
+    cardType: PropTypes.string.isRequired,
+    category: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number,
+    features: PropTypes.arrayOf(PropTypes.shape({
+      feature: PropTypes.string,
+      value: PropTypes.string,
+    })),
+  }).isRequired,
 
 };
 

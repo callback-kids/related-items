@@ -156,5 +156,9 @@ td{
 .table-value{
   font-size: 15px;
 }
+.outfit-add-button{
+  border-radius: 50%;
+  bottom: 50px;
+}
 
 

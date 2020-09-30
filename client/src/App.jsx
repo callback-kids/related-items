@@ -27,7 +27,7 @@ const images = {
 
 const card = { data, reviews, images };
 
-const cards = [card, card, card, card, card, card, card, card, card];
+const cards = [card, card, card];
 
 class App extends React.Component {
   constructor() {
@@ -88,7 +88,10 @@ class App extends React.Component {
         <Row className="carousel-rows">
           <Col xs={0} sm={2} />
           <Col xs={12} sm={8}>
-            <Outfit outfit={this.state.outfit} />
+            <Outfit
+              outfit={this.state.outfit}
+              currentItem={this.state.featuredProductData}
+            />
           </Col>
           <Col xs={0} sm={2} />
         </Row>
