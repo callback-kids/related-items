@@ -156,9 +156,27 @@ td{
 .table-value{
   font-size: 15px;
 }
+.outfit-button-position{
+  position: absolute;
+  font-size: 100px;
+  /* border-radius: 25px; */
+  height: 100px;
+  width: 90px;
+  top: 90px;
+  left: 50px;
+  text-align: start;
+}
 .outfit-add-button{
-  border-radius: 50%;
-  bottom: 50px;
+  background-color: transparent;
+  border-color: transparent;
+  outline: none !important;
+  box-shadow: none !important;
+  /* border-color: transparent; */
+}
+.outfit-add-button:hover, .outfit-add-button:focus, .outfit-add-button:active:focus{
+  background-color: transparent;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 
