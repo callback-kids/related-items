@@ -7,7 +7,7 @@ const AddItem = ({ addItem }) => (
 
   <div className="product-card-wrapper">
 
-    <Card className="product-card">
+    <Card className="product-card add-card">
 
       {/* i is the icon image, button is used for the on click function */}
       <i className="fas fa-plus outfit-button-position" />
