@@ -195,6 +195,9 @@ tr{
   height: 300px;
   overflow-y: scroll;
 }
+.checkmark{
+  font-size: 30px;
+}
 
 
 

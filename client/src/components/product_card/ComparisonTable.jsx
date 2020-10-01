@@ -65,7 +65,7 @@ const ComparisonTable = ({ productData, productCompare }) => {
       {
         tableData.map((item) => (
           <tr>
-            <td className="table-value">{item.valueOne}</td>
+            <td className="table-value">{item.valueOne === 'null' ? <p className="checkmark">&#10003;</p> : item.valueOne}</td>
             <td>{item.feature}</td>
             <td className="table-value">{item.valueTwo}</td>
           </tr>
