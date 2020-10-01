@@ -55,8 +55,8 @@ const RelatedProducts = ({ products, productCompare }) => {
           ))}
         </div>
       </div>
-      {currentCardIndex > 0 ? <Button onClick={goLeft} className="arrow-button left-button" type="button">⇦</Button> : ''}
-      {currentCardIndex < scrollLength ? <Button onClick={goRight} className="arrow-button right-button" type="button">⇨</Button> : ''}
+      {currentCardIndex > 0 ? <Button onClick={goLeft} className="arrow-button left-button" type="button"><i className="fas fa-chevron-left" /></Button> : ''}
+      {currentCardIndex < scrollLength ? <Button onClick={goRight} className="arrow-button right-button" type="button"><i className="fas fa-chevron-right" /></Button> : ''}
     </div>
   );
 };

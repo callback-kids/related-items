@@ -5,14 +5,6 @@ import PropTypes from 'prop-types';
 
 const StarRating = ({ rating }) => (
 
-  // <ReactStars
-  //   count={5}
-  //   size={15}
-  //   isHalf
-  //   edit={false}
-  //   value={rating}
-  //   activeColor="#F5B895"
-  // />
   <StarRatings
     rating={rating}
     starRatedColor="#F5B895"

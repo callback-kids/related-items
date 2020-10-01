@@ -91,9 +91,9 @@
   position: absolute;
   opacity: 0.5;
   border-radius: 15px;
-  font-size: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  font-size: 30px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   background-color: #84898C;
   border-color: #84898C;
   z-index: 1;
@@ -122,16 +122,17 @@
   margin-bottom: -100%;
 }
 .image-left-arrow{
+  text-align: start;
+  width: 15px;
   position: absolute;
   left: 1%;
-  width: 0.5vw;
   outline: none !important;
   box-shadow: none !important;
 }
 .image-right-arrow{
+  width: 15px;
   position: absolute;
-  right: 1%;
-  width: 0.5vw;
+  left: 84%;
   outline: none !important;
   box-shadow: none !important;
 }
@@ -202,6 +203,12 @@ tr{
 }
 .checkmark{
   font-size: 30px;
+}
+.add-card-text{
+  text-align: center;
+  padding-top: 10%;
+  font-size: 25px;
+  color: #373838;
 }
 
 
