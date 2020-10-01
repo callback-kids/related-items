@@ -6,29 +6,6 @@ import Outfit from './components/Outfit';
 import RelatedProducts from './components/RelatedProducts';
 import * as controller from './routes/apicontroller';
 
-const data = {
-  cardType: 'outfit',
-  category: 'Shoes',
-  name: 'blue suede',
-  price: 50,
-};
-
-const reviews = {
-  stars: 3.5,
-};
-
-const images = {
-  thumbnails: [
-    'https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
-    'https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80',
-    'https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80',
-    'https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80'],
-};
-
-const card = { data, reviews, images };
-
-const cards = [];
-
 class App extends React.Component {
   constructor() {
     super();
@@ -41,13 +18,13 @@ class App extends React.Component {
 
   componentDidMount() {
     // gets info for related products
-    controller.getAllProductInfo(55, 'related')
+    controller.getAllProductInfo(3, 'related')
       .then((cardsArray) => {
         this.setState({
           relatedItems: cardsArray,
         });
         // get info for main product, used in comparison table
-        return controller.getOneProductInfo(4, 'outfit');
+        return controller.getOneProductInfo(3, 'outfit');
       })
       // gets info for featured product
       .then((productData) => {
