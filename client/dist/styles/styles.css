@@ -137,23 +137,30 @@
   width: 100%;
 }
 table{
-  border: 1px solid #373838;
-  border-collapse: collapse;
+  border: 2px solid #373838;
+  border-collapse: separate;
   background-color: #B5C7D3;
   color: #373838;
+  border-spacing: 0;
 }
 th{
   font-size: 25px;
-  border-bottom: 1px solid #373838;
+  border-bottom: 2px solid;
   padding: 10px;
+  position: sticky;
+  top: 0;
+  background: #B5C7D3;
 }
 td, th{
-  width: 100px;
+  width: 150px;
   text-align: center;
   padding: 5px;
 }
 td{
   font-size: 20px;
+}
+tr{
+  height: 50px;
 }
 .table-value{
   font-size: 15px;
@@ -188,8 +195,6 @@ td{
   height: 300px;
   overflow-y: scroll;
 }
-.table-modal{
-  height: 300px;
-}
+
 
 

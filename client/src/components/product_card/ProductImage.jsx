@@ -28,13 +28,7 @@ const ProductImage = ({ mainImage, productData, productCompare }) => {
         <Button onClick={displayModal} variant="secondary" className="card-button" type="button">★</Button>
       </div>
 
-      {/* <Overlay target={target.current} show={showOverlay} placement="bottom">
-        <div className="table-overlay">
-          <ComparisonTable productData={productData} productCompare={productCompare} />
-        </div>
-      </Overlay> */}
-
-      <Modal size="md" className="table-modal" show={showModal} onHide={hideModal}>
+      <Modal dialogClassName="table-modal" size="md" className="table-modal" show={showModal} onHide={hideModal}>
         <div className="table-overlay">
           <ComparisonTable productData={productData} productCompare={productCompare} />
         </div>
