@@ -28,6 +28,7 @@ ProductInfo.propTypes = {
     category: PropTypes.string,
     name: PropTypes.string.isRequired,
     price: PropTypes.number,
+    id: PropTypes.number,
   }).isRequired,
 
   reviews: PropTypes.shape({

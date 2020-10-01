@@ -10,7 +10,7 @@ const OutfitImage = ({ mainImage, productData, remove }) => {
     <div className="product-image-container">
       <Image className="product-image" src={mainImage} alt={productData.name} />
       <div className="card-button-container">
-        <Button variant="secondary" className="card-button" type="button" onClick={() => remove(productData.name)} cardType={productData.cardType}
+        <Button variant="secondary" className="card-button" type="button" onClick={() => remove(productData.id)} cardType={productData.cardType}
         >✖</Button>
       </div>
     </div>
@@ -26,6 +26,7 @@ OutfitImage.propTypes = {
     category: PropTypes.string,
     name: PropTypes.string.isRequired,
     price: PropTypes.number,
+    id: PropTypes.number,
     features: PropTypes.arrayOf(PropTypes.shape({
       feature: PropTypes.string,
       value: PropTypes.string,

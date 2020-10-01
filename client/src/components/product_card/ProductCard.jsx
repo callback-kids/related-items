@@ -80,6 +80,7 @@ ProductCard.propTypes = {
     category: PropTypes.string,
     name: PropTypes.string.isRequired,
     price: PropTypes.number,
+    id: PropTypes.number,
     features: PropTypes.arrayOf(PropTypes.shape({
       feature: PropTypes.string,
       value: PropTypes.string,

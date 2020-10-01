@@ -140,8 +140,8 @@ describe('<ProductCard /> inner components', () => {
     expect(wrapper.find('ProductInfo').length).toBe(1);
   })
 
-  test('should contain an ActionButton component', () => {
-    expect(wrapper.find('ActionButton').length).toBe(1);
+  test('should contain a button with class card-button', () => {
+    expect(wrapper.exists('.card-button')).toBe(true);
   })
 
   test('should contain a ProductImage component', () => {
