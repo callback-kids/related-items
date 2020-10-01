@@ -125,19 +125,27 @@
   margin-bottom: -100%;
 }
 .image-left-arrow{
-  text-align: start;
-  width: 15px;
   position: absolute;
   left: 1%;
   outline: none !important;
   box-shadow: none !important;
 }
 .image-right-arrow{
-  width: 15px;
   position: absolute;
-  left: 84%;
+  left: 78.5%;
   outline: none !important;
   box-shadow: none !important;
+}
+.thumbnail-arrow,  .thumbnail-arrow:focus, .thumbnail-arrow:active:focus{
+  background-color: #A58D7F;
+  opacity: 75%;
+  border-color: #A58D7F;
+  color: #F1EEE6;
+}
+.thumbnail-arrow:hover{
+  background-color: #A58D7F;
+  opacity: 100%;
+  border-color: #A58D7F;
 }
 .image-arrow-wrapper{
   background-color: transparent;
