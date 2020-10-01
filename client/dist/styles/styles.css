@@ -11,9 +11,13 @@
 }
 .product-info{
   height: 30%;
-  font-size: 15px;
+  font-size: 16px;
   padding-left: 5px;
   padding-top: 5px;
+}
+.product-category{
+  font-family: Kumbh Sans;
+  font-size: 18px;
 }
 .product-card-wrapper{
   height: 275px;
@@ -109,12 +113,13 @@
   position: relative;
   padding-left: 20%;
   display: inline-block;
-  top: 5px;
+  top: -4px;
+  margin-bottom: -100%;
 }
 .product-price-rating{
   position: relative;
   bottom: 10%;
-  margin-bottom: -5%;
+  margin-bottom: -100%;
 }
 .image-left-arrow{
   position: absolute;

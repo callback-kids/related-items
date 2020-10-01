@@ -21,9 +21,9 @@ const ProductImage = ({ mainImage, productData, productCompare }) => {
   return (
 
     <div className="product-image-container">
-
+      <a href="https://www.google.com">
       <Image className="product-image" src={mainImage} alt={productData.name} />
-
+      </a>
       <div ref={target} className="card-button-container">
         <Button onClick={displayModal} variant="secondary" className="card-button" type="button">★</Button>
       </div>

@@ -47,7 +47,7 @@ class App extends React.Component {
           relatedItems: cardsArray,
         });
         // get info for main product, used in comparison table
-        return controller.getOneProductInfo(5, 'outfit');
+        return controller.getOneProductInfo(4, 'outfit');
       })
       // gets info for featured product
       .then((productData) => {
