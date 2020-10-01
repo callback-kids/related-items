@@ -148,7 +148,7 @@ th{
   padding: 10px;
 }
 td, th{
-  width: 150px;
+  width: 100px;
   text-align: center;
   padding: 5px;
 }
@@ -183,6 +183,13 @@ td{
 }
 .fas{
   color: #0F4C81;
+}
+.table-overlay{
+  height: 300px;
+  overflow-y: scroll;
+}
+.table-modal{
+  height: 300px;
 }
 
 

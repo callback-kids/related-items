@@ -1,19 +1,21 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Overlay from 'react-bootstrap/Overlay';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import ActionButton from './ActionButton';
 import ComparisonTable from './ComparisonTable';
 
 const ProductImage = ({ mainImage, productData, productCompare }) => {
-  const [showOverlay, toggleOverlay] = useState(false);
+  const [showModal, toggleModal] = useState(false);
   const target = useRef(null);
 
-  const displayOverlay = () => {
-    toggleOverlay(true);
+  const displayModal = () => {
+    toggleModal(true);
   };
-  const hideOverlay = () => {
-    toggleOverlay(false);
+  const hideModal = () => {
+    toggleModal(false);
   };
 
   return (
@@ -22,15 +24,21 @@ const ProductImage = ({ mainImage, productData, productCompare }) => {
 
       <Image className="product-image" src={mainImage} alt={productData.name} />
 
-      <div ref={target} onMouseEnter={displayOverlay} onMouseLeave={hideOverlay} className="card-button-container">
-        <ActionButton cardType={productData.cardType} />
+      <div ref={target} className="card-button-container">
+        <Button onClick={displayModal} variant="secondary" className="card-button" type="button">★</Button>
       </div>
 
-      <Overlay target={target.current} show={showOverlay} placement="bottom">
+      {/* <Overlay target={target.current} show={showOverlay} placement="bottom">
         <div className="table-overlay">
           <ComparisonTable productData={productData} productCompare={productCompare} />
         </div>
-      </Overlay>
+      </Overlay> */}
+
+      <Modal size="md" className="table-modal" show={showModal} onHide={hideModal}>
+        <div className="table-overlay">
+          <ComparisonTable productData={productData} productCompare={productCompare} />
+        </div>
+      </Modal>
 
     </div>
   );
