@@ -25,7 +25,7 @@ const ProductImage = ({ mainImage, productData, productCompare }) => {
         <Image className="product-image" src={mainImage} alt={productData.name} />
       </a>
       <div ref={target} className="card-button-container">
-        <Button onClick={displayModal} variant="secondary" className="card-button" type="button">★</Button>
+        <Button onClick={displayModal} variant="secondary" className="card-button" type="button"><i className="fas fa-star" /></Button>
       </div>
 
       <Modal dialogClassName="table-modal" size="md" className="table-modal" show={showModal} onHide={hideModal}>

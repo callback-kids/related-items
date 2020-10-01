@@ -44,16 +44,20 @@
   right: 5%;
   top: 3%;
 }
-.card-button{
+.card-button, .card-button:focus, .card-button:active:focus{
+  border-width: 1.5px;
   font-size: 10px;
-  color: #373838;
+  color: #F3D5AD;
   border-radius: 50%;
   border-color: #0F4C81;
   background-color: transparent;
+  outline: none !important;
+  box-shadow: none !important;
 }
 .card-button:hover{
-  background-color: #84898C;
-  border-color: #84898C;
+  background-color: transparent !important;
+  border-color: #F3D5AD;
+  color: #0F4C81;
 }
 .carousel-title{
   font-size: 30px;
@@ -193,7 +197,7 @@ tr{
   box-shadow: none !important;
   border-color: transparent;
 }
-.fas{
+.fa-plus{
   color: #0F4C81;
 }
 .table-overlay{
@@ -209,6 +213,4 @@ tr{
   font-size: 25px;
   color: #373838;
 }
-
-
 
