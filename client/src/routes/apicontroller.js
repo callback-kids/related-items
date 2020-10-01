@@ -12,6 +12,7 @@ const formatItemInfo = (itemInfo, cardType) => {
     name: itemInfo.name,
     price: parseInt(itemInfo.default_price, 10),
     features: itemInfo.features,
+    id: itemInfo.id,
   };
   return formattedItemInfo;
 };

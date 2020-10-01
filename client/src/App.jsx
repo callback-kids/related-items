@@ -86,14 +86,14 @@ class App extends React.Component {
           <Col xs={1} sm={2} />
         </Row>
         <Row className="carousel-rows">
-          <Col xs={0} sm={2} />
-          <Col xs={12} sm={8}>
+          <Col xs={1} sm={2} />
+          <Col xs={10} sm={8}>
             <Outfit
               outfit={this.state.relatedItems}
               currentItem={this.state.featuredProductData}
             />
           </Col>
-          <Col xs={0} sm={2} />
+          <Col xs={1} sm={2} />
         </Row>
         <Row>
           <Col xs={0} sm={2} />

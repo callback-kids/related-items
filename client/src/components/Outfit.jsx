@@ -50,9 +50,9 @@ const Outfit = ({ outfit, currentItem }) => {
     updateOutfit(newOutfit);
   };
 
-  const removeFromOutfit = (name) => {
+  const removeFromOutfit = (id) => {
     // find items with same name in currentOutfit and remove
-    const newOutfit = currentOutfit.filter((item) => item.data.name !== name);
+    const newOutfit = currentOutfit.filter((item) => item.data.id !== id);
     updateOutfit(newOutfit);
   };
 
@@ -98,6 +98,7 @@ Outfit.propTypes = {
     category: PropTypes.string,
     name: PropTypes.string.isRequired,
     price: PropTypes.number,
+    id: PropTypes.number,
     features: PropTypes.arrayOf(PropTypes.shape({
       feature: PropTypes.string,
       value: PropTypes.string,
