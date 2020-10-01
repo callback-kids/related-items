@@ -45,6 +45,17 @@ const Outfit = ({ outfit, currentItem }) => {
   };
 
   const addToOutfit = () => {
+    // check if item is in outfit
+    let itemInOutfit = false;
+    currentOutfit.forEach((item) => {
+      if (item.data.id === currentItem.data.id) {
+        itemInOutfit = true;
+      }
+    });
+    // if item found, prevent user from adding
+    if (itemInOutfit) {
+      return;
+    }
     const newOutfit = currentOutfit.slice();
     newOutfit.push(currentItem);
     updateOutfit(newOutfit);
@@ -102,15 +113,23 @@ Outfit.propTypes = {
   outfit: PropTypes.arrayOf(PropTypes.object).isRequired,
 
   currentItem: PropTypes.shape({
-    cardType: PropTypes.string.isRequired,
-    category: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number,
-    id: PropTypes.number,
-    features: PropTypes.arrayOf(PropTypes.shape({
-      feature: PropTypes.string,
-      value: PropTypes.string,
-    })),
+    data: PropTypes.shape({
+      cardType: PropTypes.string.isRequired,
+      category: PropTypes.string,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number,
+      id: PropTypes.number,
+      features: PropTypes.arrayOf(PropTypes.shape({
+        feature: PropTypes.string,
+        value: PropTypes.string,
+      })),
+    }).isRequired,
+
+    reviews: PropTypes.shape({
+      stars: PropTypes.number,
+    }).isRequired,
+
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
   }).isRequired,
 
 };
