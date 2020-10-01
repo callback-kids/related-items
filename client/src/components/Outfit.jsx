@@ -48,12 +48,20 @@ const Outfit = ({ outfit, currentItem }) => {
     const newOutfit = currentOutfit.slice();
     newOutfit.push(currentItem);
     updateOutfit(newOutfit);
+    // update local storage with new outfit
+    localStorage.savedOutfit = JSON.stringify(newOutfit);
   };
 
   const removeFromOutfit = (id) => {
     // find items with same name in currentOutfit and remove
     const newOutfit = currentOutfit.filter((item) => item.data.id !== id);
     updateOutfit(newOutfit);
+    // if outfit is empty, clear local storage, otherwise update with new outfit
+    if (newOutfit.length === 0) {
+      localStorage.removeItem('savedOutfit');
+    } else {
+      localStorage.savedOutfit = JSON.stringify(newOutfit);
+    }
   };
 
   return (

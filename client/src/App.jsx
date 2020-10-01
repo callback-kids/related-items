@@ -35,7 +35,7 @@ class App extends React.Component {
     this.state = {
       featuredProductData: {},
       relatedItems: [],
-      outfit: cards,
+      outfit: [],
     };
   }
 
@@ -56,6 +56,13 @@ class App extends React.Component {
         });
       })
       .catch((err) => console.log(err));
+
+    // if outfit in local storage, set outfit state, otherwise do nothing
+    if (localStorage.savedOutfit) {
+      this.setState({
+        outfit: JSON.parse(localStorage.savedOutfit),
+      });
+    }
   }
 
   render() {
@@ -89,7 +96,7 @@ class App extends React.Component {
           <Col xs={1} sm={2} />
           <Col xs={10} sm={8}>
             <Outfit
-              outfit={this.state.relatedItems}
+              outfit={this.state.outfit}
               currentItem={this.state.featuredProductData}
             />
           </Col>
