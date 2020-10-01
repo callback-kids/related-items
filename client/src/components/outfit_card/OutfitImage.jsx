@@ -11,7 +11,7 @@ const OutfitImage = ({ mainImage, productData, remove }) => {
       <Image className="product-image" src={mainImage} alt={productData.name} />
       <div className="card-button-container">
         <Button variant="secondary" className="card-button" type="button" onClick={() => remove(productData.id)} cardType={productData.cardType}
-        >✖</Button>
+        ><i class="fas fa-times"></i></Button>
       </div>
     </div>
   );
