@@ -1,14 +1,15 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import Outfit from './components/Outfit';
 import RelatedProducts from './components/RelatedProducts';
 import * as controller from './routes/apicontroller';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       featuredProductData: {},
       relatedItems: [],
@@ -17,14 +18,28 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // gets info for related products
-    controller.getAllProductInfo(3, 'related')
+    this.getAppData(1);
+  }
+
+  // componentDidUpdate(prevProps) {
+  //   console.log(window.location);
+  //   if (this.props.match.params !== prevProps.match.params) {
+  //     if(this.props.match.params.id) {
+  //       this.getAppData(parseInt(this.props.match.params.id));
+  //     }
+  //   }
+  // }
+
+  getAppData(id) {
+    controller.getAllProductInfo(id, 'related')
       .then((cardsArray) => {
+        console.log('old state,', this.state);
         this.setState({
           relatedItems: cardsArray,
         });
+        console.log('new state, ', this.state);
         // get info for main product, used in comparison table
-        return controller.getOneProductInfo(3, 'outfit');
+        return controller.getOneProductInfo(id, 'outfit');
       })
       // gets info for featured product
       .then((productData) => {

@@ -40,7 +40,6 @@ const generateTableData = (arr1, arr2) => {
   return output;
 };
 
-const table = generateTableData(exampleData.features, exampleData2.features);
 
 const ComparisonTable = ({ productData, productCompare }) => {
   const [tableData, updateTable] = useState([]);

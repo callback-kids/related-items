@@ -1,10 +1,9 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import Overlay from 'react-bootstrap/Overlay';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
-import ActionButton from './ActionButton';
 import ComparisonTable from './ComparisonTable';
 
 const ProductImage = ({ mainImage, productData, productCompare }) => {
@@ -21,9 +20,9 @@ const ProductImage = ({ mainImage, productData, productCompare }) => {
   return (
 
     <div className="product-image-container">
-      <a href="https://www.google.com">
+      <Link to={`/products/${productData.id}`}>
         <Image className="product-image" src={mainImage} alt={productData.name} />
-      </a>
+      </Link>
       <div ref={target} className="card-button-container">
         <Button onClick={displayModal} variant="secondary" className="card-button" type="button"><i className="fas fa-star" /></Button>
       </div>

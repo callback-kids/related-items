@@ -161,7 +161,7 @@ table{
   border-spacing: 0;
 }
 th{
-  font-size: 25px;
+  font-size: 20px;
   border-bottom: 2px solid;
   padding: 10px;
   position: sticky;
@@ -169,7 +169,7 @@ th{
   background: #B5C7D3;
 }
 td, th{
-  width: 150px;
+  width: 175px;
   text-align: center;
   padding: 5px;
 }
