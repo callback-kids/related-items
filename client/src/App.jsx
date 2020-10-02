@@ -11,6 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     let prodId = 1;
+    // if route is /:id, update state to reflect that
     if (props.match.params.id) {
       prodId = parseInt(props.match.params.id);
     }
@@ -23,10 +24,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getAppData(2);
+    this.getAppData(1);
   }
 
   componentDidUpdate(prevProps) {
+    // update id state and cause rerender with new products if passed a new id param
     if (this.props.match.params !== prevProps.match.params) {
       if (this.props.match.params.id) {
         this.getAppData(this.props.match.params.id);
