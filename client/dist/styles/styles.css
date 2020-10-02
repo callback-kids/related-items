@@ -50,12 +50,12 @@
   color: #F3D5AD;
   border-radius: 50%;
   border-color: #0F4C81;
-  background-color: transparent;
+  background-color: #0F4C81;
   outline: none !important;
   box-shadow: none !important;
 }
 .card-button:hover{
-  background-color: transparent !important;
+  background-color: #F3D5AD;
   border-color: #F3D5AD;
   color: #0F4C81;
 }

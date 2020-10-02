@@ -10,36 +10,41 @@ import * as controller from './routes/apicontroller';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    let prodId = 1;
+    if (props.match.params.id) {
+      prodId = parseInt(props.match.params.id);
+    }
     this.state = {
       featuredProductData: {},
       relatedItems: [],
       outfit: [],
+      id: prodId,
     };
   }
 
   componentDidMount() {
-    this.getAppData(1);
+    this.getAppData(2);
   }
 
-  // componentDidUpdate(prevProps) {
-  //   console.log(window.location);
-  //   if (this.props.match.params !== prevProps.match.params) {
-  //     if(this.props.match.params.id) {
-  //       this.getAppData(parseInt(this.props.match.params.id));
-  //     }
-  //   }
-  // }
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params !== prevProps.match.params) {
+      if (this.props.match.params.id) {
+        this.getAppData(this.props.match.params.id);
+      }
+    }
+  }
 
   getAppData(id) {
-    controller.getAllProductInfo(id, 'related')
+    this.setState({
+      id,
+    });
+    controller.getAllProductInfo(this.state.id, 'related')
       .then((cardsArray) => {
-        console.log('old state,', this.state);
         this.setState({
           relatedItems: cardsArray,
         });
-        console.log('new state, ', this.state);
         // get info for main product, used in comparison table
-        return controller.getOneProductInfo(id, 'outfit');
+        return controller.getOneProductInfo(this.state.id, 'outfit');
       })
       // gets info for featured product
       .then((productData) => {
