@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 
 const ActionButton = ({ cardType }) => (
 
-  <Button variant="secondary" className="card-button" type="button">{cardType === 'related' ? '★' : '✖'}</Button>
+  <Button variant="secondary" className="card-button" type="button">★</Button>
 
 );
 

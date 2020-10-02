@@ -6,7 +6,7 @@ const ProductInfo = ({ data, reviews }) => (
 
   <div className="product-info">
 
-    <div className="title-text">
+    <div className="category-text">
 
       <span className="product-category">{` ${data.category}`}</span>
     </div>
@@ -28,6 +28,7 @@ ProductInfo.propTypes = {
     category: PropTypes.string,
     name: PropTypes.string.isRequired,
     price: PropTypes.number,
+    id: PropTypes.number,
   }).isRequired,
 
   reviews: PropTypes.shape({
