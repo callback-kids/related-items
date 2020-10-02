@@ -7,8 +7,8 @@ function AppRouter() {
     <Router>
 
       <Switch>
-        <Route path="/products/:id" component={App} />
-        <Route path="/" component={App} />
+        <Route exact path="/products/:id" component={App} />
+        <Route exact path="/" component={App} />
       </Switch>
 
     </Router>

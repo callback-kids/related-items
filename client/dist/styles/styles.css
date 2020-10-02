@@ -174,14 +174,14 @@ td, th{
   padding: 5px;
 }
 td{
-  font-size: 20px;
+  font-size: 15px;
 }
 tr{
   height: 50px;
 }
-.table-value{
+/* .table-value{
   font-size: 15px;
-}
+} */
 .outfit-button-position{
   position: absolute;
   font-size: 100px;
