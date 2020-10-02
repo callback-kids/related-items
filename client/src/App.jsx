@@ -1,30 +1,52 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import Outfit from './components/Outfit';
 import RelatedProducts from './components/RelatedProducts';
 import * as controller from './routes/apicontroller';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    let prodId = 1;
+    // if route is /:id, update state to reflect that
+    if (props.match.params.id) {
+      prodId = parseInt(props.match.params.id);
+    }
     this.state = {
       featuredProductData: {},
       relatedItems: [],
       outfit: [],
+      id: prodId,
     };
   }
 
   componentDidMount() {
-    // gets info for related products
-    controller.getAllProductInfo(3, 'related')
+    this.getAppData(1);
+  }
+
+  componentDidUpdate(prevProps) {
+    // update id state and cause rerender with new products if passed a new id param
+    if (this.props.match.params !== prevProps.match.params) {
+      if (this.props.match.params.id) {
+        this.getAppData(this.props.match.params.id);
+      }
+    }
+  }
+
+  getAppData(id) {
+    this.setState({
+      id,
+    });
+    controller.getAllProductInfo(this.state.id, 'related')
       .then((cardsArray) => {
         this.setState({
           relatedItems: cardsArray,
         });
         // get info for main product, used in comparison table
-        return controller.getOneProductInfo(3, 'outfit');
+        return controller.getOneProductInfo(this.state.id, 'outfit');
       })
       // gets info for featured product
       .then((productData) => {

@@ -40,8 +40,6 @@ const generateTableData = (arr1, arr2) => {
   return output;
 };
 
-const table = generateTableData(exampleData.features, exampleData2.features);
-
 const ComparisonTable = ({ productData, productCompare }) => {
   const [tableData, updateTable] = useState([]);
 
@@ -58,16 +56,16 @@ const ComparisonTable = ({ productData, productCompare }) => {
         <th className="title-text">{productCompare.name}</th>
       </tr>
       <tr>
-        <td className="table-value">{`$${productData.price}`}</td>
-        <td>Price</td>
-        <td className="table-value">{`$${productCompare.price}`}</td>
+        <td>{`$${productData.price}`}</td>
+        <td>PRICE</td>
+        <td>{`$${productCompare.price}`}</td>
       </tr>
       {
         tableData.map((item) => (
           <tr>
-            <td className="table-value">{item.valueOne === 'null' ? <p className="checkmark">&#10003;</p> : item.valueOne}</td>
-            <td>{item.feature}</td>
-            <td className="table-value">{item.valueTwo}</td>
+            <td>{item.valueOne === 'null' ? <p className="checkmark">&#10003;</p> : item.valueOne}</td>
+            <td>{item.feature.toUpperCase()}</td>
+            <td>{item.valueTwo}</td>
           </tr>
         ))
       }

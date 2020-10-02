@@ -5,8 +5,11 @@ import PropTypes from 'prop-types';
 const ThumbnailCarousel = ({ click }) => (
 
   <div className="image-arrow-wrapper">
-    <Button variant="outline-dark" onClick={() => click('left')} type="button" className="image-left-arrow"><i className="fas fa-chevron-left" /></Button>
-    <Button variant="outline-dark" onClick={() => click('right')} type="button" className="image-right-arrow"><i className="fas fa-chevron-right" /></Button>
+
+    <Button onClick={() => click('left')} type="button" className="thumbnail-arrow image-left-arrow"><i className="fas fa-chevron-left" /></Button>
+
+    <Button onClick={() => click('right')} type="button" className="thumbnail-arrow image-right-arrow"><i className="fas fa-chevron-right" /></Button>
+
   </div>
 
 );

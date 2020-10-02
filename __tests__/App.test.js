@@ -1,21 +1,30 @@
 import App from '../client/src/App.jsx';
-import { mount, shallow } from 'enzyme';
+import { mount, shallow, } from 'enzyme';
+import { Route } from 'react-router-dom';
 
 describe('<App /> components', () => {
 
   let wrapper;
+  const props = {
+    match: {
+      params:
+        {
+          id: 4,
+        }
+      },
+   };
 
   beforeEach(() => {
-    wrapper = mount(<App />);
+    wrapper = shallow(
+    <App {...props} />
+    );
   })
 
   test('should contain a RelatedProducts component', () => {
-    let stars = wrapper.find('.star-rating')
     expect(wrapper.find('RelatedProducts').length).toBe(1);
   })
 
-  xtest('should contain an Outfit component', () => {
-    let stars = wrapper.find('.star-rating')
+  test('should contain an Outfit component', () => {
     expect(wrapper.find('Outfit').length).toBe(1);
   })
 

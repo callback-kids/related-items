@@ -50,12 +50,12 @@
   color: #F3D5AD;
   border-radius: 50%;
   border-color: #0F4C81;
-  background-color: transparent;
+  background-color: #0F4C81;
   outline: none !important;
   box-shadow: none !important;
 }
 .card-button:hover{
-  background-color: transparent !important;
+  background-color: #F3D5AD;
   border-color: #F3D5AD;
   color: #0F4C81;
 }
@@ -125,19 +125,27 @@
   margin-bottom: -100%;
 }
 .image-left-arrow{
-  text-align: start;
-  width: 15px;
   position: absolute;
   left: 1%;
   outline: none !important;
   box-shadow: none !important;
 }
 .image-right-arrow{
-  width: 15px;
   position: absolute;
-  left: 84%;
+  left: 78.5%;
   outline: none !important;
   box-shadow: none !important;
+}
+.thumbnail-arrow,  .thumbnail-arrow:focus, .thumbnail-arrow:active:focus{
+  background-color: #A58D7F;
+  opacity: 75%;
+  border-color: #A58D7F;
+  color: #F1EEE6;
+}
+.thumbnail-arrow:hover{
+  background-color: #A58D7F;
+  opacity: 100%;
+  border-color: #A58D7F;
 }
 .image-arrow-wrapper{
   background-color: transparent;
@@ -153,7 +161,7 @@ table{
   border-spacing: 0;
 }
 th{
-  font-size: 25px;
+  font-size: 20px;
   border-bottom: 2px solid;
   padding: 10px;
   position: sticky;
@@ -161,18 +169,15 @@ th{
   background: #B5C7D3;
 }
 td, th{
-  width: 150px;
+  width: 175px;
   text-align: center;
   padding: 5px;
 }
 td{
-  font-size: 20px;
+  font-size: 15px;
 }
 tr{
   height: 50px;
-}
-.table-value{
-  font-size: 15px;
 }
 .outfit-button-position{
   position: absolute;
