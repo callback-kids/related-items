@@ -10,23 +10,14 @@ import * as controller from './routes/apicontroller';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    let prodId = 1;
-    // if route is /:id, update state to reflect that
-    if (props.match.params.id) {
-      prodId = parseInt(props.match.params.id);
-    }
     this.state = {
       featuredProductData: {},
       relatedItems: [],
       outfit: [],
-      id: prodId,
     };
   }
 
   componentDidMount() {
-<<<<<<< HEAD
-    controller.getAllProductInfo(2, 'related')
-=======
     this.getAppData(1);
   }
 
@@ -34,32 +25,25 @@ class App extends React.Component {
     // update id state and cause rerender with new products if passed a new id param
     if (this.props.match.params !== prevProps.match.params) {
       if (this.props.match.params.id) {
-        this.getAppData(this.props.match.params.id);
+        this.getAppData(parseInt(this.props.match.params.id));
       }
     }
   }
 
   getAppData(id) {
-    this.setState({
-      id,
-    });
-    controller.getAllProductInfo(this.state.id, 'related')
->>>>>>> e237d944c399c651330096ad376499c08977c83d
+    controller.getAllProductInfo(id, 'related')
       .then((cardsArray) => {
         this.setState({
           relatedItems: cardsArray,
         });
-<<<<<<< HEAD
-=======
         // get info for main product, used in comparison table
-        return controller.getOneProductInfo(this.state.id, 'outfit');
+        return controller.getOneProductInfo(id, 'outfit');
       })
       // gets info for featured product
       .then((productData) => {
         this.setState({
           featuredProductData: productData,
         });
->>>>>>> e237d944c399c651330096ad376499c08977c83d
       })
       .catch((err) => console.log(err));
 

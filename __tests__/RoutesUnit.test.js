@@ -13,6 +13,13 @@ describe('getItemInfo', () => {
   const correctOutput = {
     cardType: 'related',
     category: 'Jackets',
+    features: [
+        {
+          "feature": "Buttons",
+          "value": "Brass",
+        },
+      ],
+    id: 1,
     name: 'Camo Onesie',
     price: 140,
   }
