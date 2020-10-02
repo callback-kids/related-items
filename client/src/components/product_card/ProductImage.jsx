@@ -20,9 +20,11 @@ const ProductImage = ({ mainImage, productData, productCompare }) => {
   return (
 
     <div className="product-image-container">
+
       <Link to={`/products/${productData.id}`}>
         <Image className="product-image" src={mainImage} alt={productData.name} />
       </Link>
+
       <div ref={target} className="card-button-container">
         <Button onClick={displayModal} variant="secondary" className="card-button" type="button"><i className="fas fa-star" /></Button>
       </div>

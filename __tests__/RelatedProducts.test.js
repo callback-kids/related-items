@@ -3,6 +3,7 @@ import ProductCard from '../client/src/components/product_card/ProductCard.jsx';
 import ProductInfo from '../client/src/components/product_card/ProductInfo';
 import ThumbnailCarousel from '../client/src/components/product_card/ThumbnailCarousel';
 import { mount , shallow } from 'enzyme';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('<RelatedProducts /> components', () => {
 
@@ -31,7 +32,11 @@ describe('<RelatedProducts /> components', () => {
 
     const cards = [card, card, card, card, card, card, card];
 
-    wrapper = mount(<RelatedProducts products={cards} />);
+    wrapper = mount(
+    <BrowserRouter>
+      <RelatedProducts products={cards} />
+    </BrowserRouter>
+    );
     cardListLength = cards.length;
   })
 
@@ -129,7 +134,11 @@ describe('<ProductCard /> inner components', () => {
       'https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80',
       'https://images.unsplash.com/photo-1527522883525-97119bfce82d?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80',
     ];
-    wrapper = mount(<ProductCard data={productData} reviews={reviews} images={images} />);
+    wrapper = mount(
+    <BrowserRouter>
+      <ProductCard data={productData} reviews={reviews} images={images} />
+    </BrowserRouter>
+    );
   })
 
   test('should contain a StarRating component', () => {
