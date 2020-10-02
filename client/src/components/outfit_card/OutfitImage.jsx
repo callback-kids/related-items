@@ -10,8 +10,9 @@ const OutfitImage = ({ mainImage, productData, remove }) => {
     <div className="product-image-container">
       <Image className="product-image" src={mainImage} alt={productData.name} />
       <div className="card-button-container">
-        <Button variant="secondary" className="card-button" type="button" onClick={() => remove(productData.id)} cardType={productData.cardType}
-        ><i class="fas fa-times"></i></Button>
+        <Button variant="secondary" className="card-button" type="button" onClick={() => remove(productData.id)}>
+          <i className="fas fa-times" />
+        </Button>
       </div>
     </div>
   );

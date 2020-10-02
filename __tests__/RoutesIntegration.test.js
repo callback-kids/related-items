@@ -7,30 +7,24 @@ import * as controller from '../client/src/routes/apicontroller';
 jest.mock('../client/src/routes/apicontroller');
 
 const infoOutput = {
-  category: 'Jackets',
-  name: 'Camo Onesie',
-  price: 140,
+  info: 'test'
 }
 
 const photoOutput = {
-  thumbnails: ["https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80", "https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"],
-  photos: ["https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80", "https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80"]
+  photos: 'test'
 }
 
-const reviewOutput = { stars: 3.72972972972973}
+const reviewOutput = { stars: 'test'}
 
 const data = {
   data: {
     cardType: 'related',
-    category: 'Jackets',
-    name: 'Camo Onesie',
-    price: 140,
+    info: 'test',
 },
   images: {
-  thumbnails: ["https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80", "https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"],
-  photos: ["https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80", "https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80"]
+    photos: 'test'
 },
-  reviews: { stars: 3.72972972972973},
+  reviews: { stars: 'test'},
 }
 
 xdescribe('getOneProductInfo', () => {

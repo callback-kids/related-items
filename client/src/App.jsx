@@ -22,7 +22,7 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // update id state and cause rerender with new products if passed a new id param
+    // update id state and cause rerender with new products if passed a new id url param
     if (this.props.match.params !== prevProps.match.params) {
       if (this.props.match.params.id) {
         this.getAppData(parseInt(this.props.match.params.id));

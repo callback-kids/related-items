@@ -59,7 +59,7 @@ const ProductCard = ({ data, reviews, images, productCompare }) => {
 ProductCard.propTypes = {
 
   data: PropTypes.shape({
-    cardType: PropTypes.string.isRequired,
+    cardType: PropTypes.string,
     category: PropTypes.string,
     name: PropTypes.string.isRequired,
     price: PropTypes.number,
@@ -76,9 +76,9 @@ ProductCard.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
 
   productCompare: PropTypes.shape({
-    cardType: PropTypes.string.isRequired,
+    cardType: PropTypes.string,
     category: PropTypes.string,
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     price: PropTypes.number,
     id: PropTypes.number,
     features: PropTypes.arrayOf(PropTypes.shape({

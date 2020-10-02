@@ -18,9 +18,7 @@ describe('<App /> components', () => {
   beforeEach(() => {
     controller.getAllProductInfo = jest.fn((id, cardType) => Promise.resolve('getAll'))
     controller.getOneProductInfo = jest.fn((id, cardType) => Promise.resolve('getOne'))
-    wrapper = shallow(
-    <App {...props} />
-    );
+    wrapper = shallow(<App {...props} />);
   })
 
   test('should contain a RelatedProducts component', () => {
@@ -36,7 +34,9 @@ describe('<App /> components', () => {
     expect(wrapper.state().featuredProductData).toBe('getOne');
   })
 
+
 })
+
 
 
 
