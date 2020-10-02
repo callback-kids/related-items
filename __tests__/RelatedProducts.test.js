@@ -1,6 +1,7 @@
 import RelatedProducts from '../client/src/components/RelatedProducts.jsx';
 import ProductCard from '../client/src/components/product_card/ProductCard.jsx';
 import ProductInfo from '../client/src/components/product_card/ProductInfo';
+import ComparisonTable from '../client/src/components/product_card/ComparisonTable'
 import ThumbnailCarousel from '../client/src/components/product_card/ThumbnailCarousel';
 import { mount , shallow } from 'enzyme';
 import { BrowserRouter } from 'react-router-dom';
@@ -205,6 +206,29 @@ describe('<ThumbnailCarousel /> shallow render: ', () => {
 
   test('should contain a right arrow button', () => {
     expect(wrapper.exists('.image-right-arrow')).toBe(true);
+  })
+
+})
+
+describe('<ComparisonTable />', () => {
+  let wrapper;
+  const exampleData = {
+    name: 'product 1',
+    price: 50,
+    features: [{ feature: 'Fabric', value: '100% Cotton' }, { feature: 'Cut', value: 'Skinny' }, { feature: 'testSame', value: 'same' }, { feature: 'testOne', value: 'one' }],
+  };
+  const exampleData2 = {
+    name: 'product 2',
+    price: 75,
+    features: [{ feature: 'Fabric', value: '99% Cotton 1% Elastic' }, { feature: 'Cut', value: 'Loose' }, { feature: 'testSame', value: 'same' }, { feature: 'testTwo', value: 'two' }],
+  };
+
+  beforeEach(() => {
+    wrapper = mount(<ComparisonTable productData={exampleData} productCompare={exampleData2}/>)
+  })
+
+  test('renders table with correct number of rows', () => {
+    expect(wrapper.find('tr').length).toBe(7);
   })
 
 })

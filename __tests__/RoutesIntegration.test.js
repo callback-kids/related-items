@@ -1,8 +1,12 @@
 import * as model from '../client/src/routes/apimodel';
 import * as controller from '../client/src/routes/apicontroller';
 
+/********************
+ tests still in progress, can't get async promise chain to mock correctly
+ *******************/
+jest.mock('../client/src/routes/apicontroller');
+
 const infoOutput = {
-  cardType: 'related',
   category: 'Jackets',
   name: 'Camo Onesie',
   price: 140,
@@ -30,15 +34,15 @@ const data = {
 }
 
 xdescribe('getOneProductInfo', () => {
-  controller.getItemInfo = jest.fn(() => Promise.resolve(infoOutput));
-  controller.getItemPhotos = jest.fn(() => Promise.resolve(photoOutput));
-  controller.getStars = jest.fn(() => Promise.resolve(reviewOutput));
-  test('should return an object with correctly formatted data, photos and reviews', async () => {
-    await expect(controller.getOneProductInfo(1, 'related')).toEqual(data);
+
+  controller.getItemInfo.mockResolvedValue(infoOutput);
+  controller.getItemPhotos.mockResolvedValue(photoOutput);
+  controller.getStars.mockResolvedValue(reviewOutput);
+
+  test('should return an object with correctly formatted data, photos and reviews', () => {
+    expect(controller.getOneProductInfo(1, 'related')).toEqual(data);
   })
-  controller.getItemInfo.mockReset();
-  controller.getItemPhotos.mockReset();
-  controller.getStars.mockReset();
+
 })
 
 xdescribe('createProductCardArray', () => {

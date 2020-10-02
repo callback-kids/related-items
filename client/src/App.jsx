@@ -45,7 +45,7 @@ class App extends React.Component {
           featuredProductData: productData,
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => { throw err; });
 
     // if outfit in local storage, set outfit state, otherwise do nothing
     if (localStorage.savedOutfit) {

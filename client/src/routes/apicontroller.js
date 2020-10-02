@@ -2,7 +2,7 @@ import * as model from './apimodel';
 
 export const getRelatedItemsList = (id) => model.getRelatedItems(id)
   .then((items) => items)
-  .catch((err) => console.log(err));
+  .catch((err) => { throw err; });
 
 const formatItemInfo = (itemInfo, cardType) => {
   // create obj with cardtype, category, name and price
@@ -20,7 +20,7 @@ const formatItemInfo = (itemInfo, cardType) => {
 // return product item info
 export const getItemInfo = (id, cardType) => model.getItemInfo(id)
   .then((itemInfo) => formatItemInfo(itemInfo, cardType))
-  .catch((err) => { console.log(err); });
+  .catch((err) => { throw err; });
 
 const formatItemPhotos = (itemPhotos) => {
   const thumbnails = [];
@@ -46,7 +46,7 @@ const formatItemPhotos = (itemPhotos) => {
 // return items photos
 export const getItemPhotos = (id) => model.getItemPhotos(id)
   .then((itemPhotos) => formatItemPhotos(itemPhotos))
-  .catch((err) => { console.log(err); });
+  .catch((err) => { throw err; });
 
 const calculateStars = (starData) => {
   // used to count total number of reviews
@@ -71,7 +71,7 @@ const calculateStars = (starData) => {
 export const getStars = (id) => model.getReviewData(id)
   // data comes in as number of reviews per star rating, need to calculate avg and return
   .then((reviewData) => calculateStars(reviewData))
-  .catch((err) => console.log(err));
+  .catch((err) => { throw err; });
 
 // retrieves and formats info for one product card
 export const getOneProductInfo = (id, cardType) => {
@@ -114,7 +114,3 @@ export const getAllProductInfo = (id, cardType) => getRelatedItemsList(id)
       .then((cardsArray) => cardsArray);
   })
   .catch((err) => { console.log(err); });
-
-export const getCart = (session) => model.getCart(session)
-  .then((cart) => cart)
-  .catch((err) => console.log(err));
