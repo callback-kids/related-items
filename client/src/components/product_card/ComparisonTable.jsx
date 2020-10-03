@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const exampleData = {
-  name: 'product 1',
-  price: 50,
-  features: [{ feature: 'Fabric', value: '100% Cotton' }, { feature: 'Cut', value: 'Skinny' }, { feature: 'testSame', value: 'same' }, { feature: 'testOne', value: 'one' }],
-};
-
-const exampleData2 = {
-  name: 'product 2',
-  price: 75,
-  features: [{ feature: 'Fabric', value: '99% Cotton 1% Elastic' }, { feature: 'Cut', value: 'Loose' }, { feature: 'testSame', value: 'same' }, { feature: 'testTwo', value: 'two' }],
-};
-
 const generateTableData = (arr1, arr2) => {
   const output = [];
 
@@ -75,7 +63,7 @@ const ComparisonTable = ({ productData, productCompare }) => {
 
 ComparisonTable.propTypes = {
   productData: PropTypes.shape({
-    cardType: PropTypes.string.isRequired,
+    cardType: PropTypes,
     category: PropTypes.string,
     name: PropTypes.string.isRequired,
     price: PropTypes.number,
@@ -87,9 +75,9 @@ ComparisonTable.propTypes = {
   }).isRequired,
 
   productCompare: PropTypes.shape({
-    cardType: PropTypes.string.isRequired,
+    cardType: PropTypes.string,
     category: PropTypes.string,
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     price: PropTypes.number,
     id: PropTypes.number,
     features: PropTypes.arrayOf(PropTypes.shape({

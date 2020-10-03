@@ -63,8 +63,8 @@ const Outfit = ({ outfit, currentItem }) => {
     localStorage.savedOutfit = JSON.stringify(newOutfit);
   };
 
+  // find items with same name in currentOutfit and remove
   const removeFromOutfit = (id) => {
-    // find items with same name in currentOutfit and remove
     const newOutfit = currentOutfit.filter((item) => item.data.id !== id);
     updateOutfit(newOutfit);
     // if outfit is empty, clear local storage, otherwise update with new outfit
@@ -108,29 +108,34 @@ const Outfit = ({ outfit, currentItem }) => {
   );
 };
 
+Outfit.defaultProps = {
+  outfit: [],
+  currentItem: {},
+};
+
 Outfit.propTypes = {
 
-  outfit: PropTypes.arrayOf(PropTypes.object).isRequired,
+  outfit: PropTypes.arrayOf(PropTypes.object),
 
   currentItem: PropTypes.shape({
     data: PropTypes.shape({
-      cardType: PropTypes.string.isRequired,
+      cardType: PropTypes.string,
       category: PropTypes.string,
-      name: PropTypes.string.isRequired,
+      name: PropTypes.string,
       price: PropTypes.number,
       id: PropTypes.number,
       features: PropTypes.arrayOf(PropTypes.shape({
         feature: PropTypes.string,
         value: PropTypes.string,
       })),
-    }).isRequired,
+    }),
 
     reviews: PropTypes.shape({
       stars: PropTypes.number,
-    }).isRequired,
+    }),
 
-    images: PropTypes.arrayOf(PropTypes.string).isRequired,
-  }).isRequired,
+    images: PropTypes.arrayOf(PropTypes.string),
+  }),
 
 };
 

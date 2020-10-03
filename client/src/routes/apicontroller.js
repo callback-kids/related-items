@@ -2,7 +2,7 @@ import * as model from './apimodel';
 
 export const getRelatedItemsList = (id) => model.getRelatedItems(id)
   .then((items) => items)
-  .catch((err) => console.log(err));
+  .catch((err) => { throw err; });
 
 const formatItemInfo = (itemInfo, cardType) => {
   // create obj with cardtype, category, name and price
@@ -18,9 +18,9 @@ const formatItemInfo = (itemInfo, cardType) => {
 };
 
 // return product item info
-const getItemInfo = (id, cardType) => model.getItemInfo(id)
+export const getItemInfo = (id, cardType) => model.getItemInfo(id)
   .then((itemInfo) => formatItemInfo(itemInfo, cardType))
-  .catch((err) => { console.log(err); });
+  .catch((err) => { throw err; });
 
 const formatItemPhotos = (itemPhotos) => {
   const thumbnails = [];
@@ -44,9 +44,9 @@ const formatItemPhotos = (itemPhotos) => {
 };
 
 // return items photos
-const getItemPhotos = (id) => model.getItemPhotos(id)
+export const getItemPhotos = (id) => model.getItemPhotos(id)
   .then((itemPhotos) => formatItemPhotos(itemPhotos))
-  .catch((err) => { console.log(err); });
+  .catch((err) => { throw err; });
 
 const calculateStars = (starData) => {
   // used to count total number of reviews
@@ -61,21 +61,17 @@ const calculateStars = (starData) => {
   entries.forEach((review) => {
     reviewCount += review[1];
     // multiply number of reviews by review value
-    reviewAvg += (review[0] * review[1]);
+    reviewAvg += (parseInt(review[0], 10) * review[1]);
   });
   reviewAvg /= reviewCount;
   return { stars: reviewAvg };
 };
 
 // return avg star rating for item
-const getStars = (id) => model.getReviewData(id)
+export const getStars = (id) => model.getReviewData(id)
   // data comes in as number of reviews per star rating, need to calculate avg and return
   .then((reviewData) => calculateStars(reviewData))
-  .catch((err) => console.log(err));
-
-export const getCart = (session) => model.getCart(session)
-  .then((cart) => cart)
-  .catch((err) => console.log(err));
+  .catch((err) => { throw err; });
 
 // retrieves and formats info for one product card
 export const getOneProductInfo = (id, cardType) => {
@@ -100,7 +96,7 @@ export const getOneProductInfo = (id, cardType) => {
 };
 
 // creates array comprised of the promises returned from calling getoneproductinfo
-const createProductCardArray = (productList, cardType) => {
+export const createProductCardArray = (productList, cardType) => {
   const returnArray = [];
   for (let i = 0; i < productList.length; i += 1) {
     returnArray.push(getOneProductInfo(productList[i], cardType));

@@ -61,21 +61,25 @@ const RelatedProducts = ({ products, productCompare }) => {
   );
 };
 
+RelatedProducts.defaultProps = {
+  productCompare: {},
+};
+
 RelatedProducts.propTypes = {
 
   products: PropTypes.arrayOf(PropTypes.object).isRequired,
 
   productCompare: PropTypes.shape({
-    cardType: PropTypes.string.isRequired,
+    cardType: PropTypes.string,
     category: PropTypes.string,
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     price: PropTypes.number,
     id: PropTypes.number,
     features: PropTypes.arrayOf(PropTypes.shape({
       feature: PropTypes.string,
       value: PropTypes.string,
     })),
-  }).isRequired,
+  }),
 
 };
 

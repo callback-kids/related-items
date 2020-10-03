@@ -10,16 +10,10 @@ import * as controller from './routes/apicontroller';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    let prodId = 1;
-    // if route is /:id, update state to reflect that
-    if (props.match.params.id) {
-      prodId = parseInt(props.match.params.id);
-    }
     this.state = {
       featuredProductData: {},
       relatedItems: [],
       outfit: [],
-      id: prodId,
     };
   }
 
@@ -28,25 +22,22 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    // update id state and cause rerender with new products if passed a new id param
+    // update id state and cause rerender with new products if passed a new id url param
     if (this.props.match.params !== prevProps.match.params) {
       if (this.props.match.params.id) {
-        this.getAppData(this.props.match.params.id);
+        this.getAppData(parseInt(this.props.match.params.id));
       }
     }
   }
 
   getAppData(id) {
-    this.setState({
-      id,
-    });
-    controller.getAllProductInfo(this.state.id, 'related')
+    controller.getAllProductInfo(id, 'related')
       .then((cardsArray) => {
         this.setState({
           relatedItems: cardsArray,
         });
         // get info for main product, used in comparison table
-        return controller.getOneProductInfo(this.state.id, 'outfit');
+        return controller.getOneProductInfo(id, 'outfit');
       })
       // gets info for featured product
       .then((productData) => {
@@ -54,7 +45,7 @@ class App extends React.Component {
           featuredProductData: productData,
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => { throw err; });
 
     // if outfit in local storage, set outfit state, otherwise do nothing
     if (localStorage.savedOutfit) {
