@@ -18,7 +18,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getAppData(1);
+    // check if page is refreshing to product page
+    if (this.props.match.params.id) {
+      this.getAppData(parseInt(this.props.match.params.id));
+    } else {
+      // default product
+      this.getAppData(1);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -57,7 +63,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <Container className="container" fluid>
+      <Container className="container">
         <Row>
           <Col xs={1} sm={2} />
           <Col xs={10} sm={8}>

@@ -7,5 +7,5 @@ import AppRouter from './Router';
 ReactDOM.render(
 
   <AppRouter />,
-  document.getElementById('root'),
+  document.getElementById('related-items'),
 );
