@@ -1,12 +1,9 @@
-#root{
+#related-items{
   font-family: Crimson Text;
   background-color: #F1EEE6;
 }
 .title-text{
   font-family: Kumbh Sans;
-}
-.container{
-  border: 2px solid black;
 }
 .product-info{
   height: 30%;
