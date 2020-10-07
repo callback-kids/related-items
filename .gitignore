@@ -3,3 +3,4 @@ node_modules/
 client/dist/bundle.js
 coverage/
 server/node_modules
+.env
