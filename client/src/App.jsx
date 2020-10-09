@@ -63,7 +63,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <Container className="container">
+      <div>
+
         <Row>
           <Col xs={1} sm={2} />
           <Col xs={10} sm={8}>
@@ -103,7 +104,8 @@ class App extends React.Component {
           <Col xs={12} sm={8} />
           <Col xs={0} sm={2} />
         </Row>
-      </Container>
+
+      </div>
     );
   }
 }
