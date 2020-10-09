@@ -5,6 +5,7 @@ const compression = require('compression');
 const app = express();
 const PORT = 3001;
 
+// used to compress files when sending them to client
 const shouldCompress = (req, res) => {
   if (req.headers['x-no-compression']) {
     return false;

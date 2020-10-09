@@ -2,3 +2,4 @@ jest.config.js
 client/dist/bundle.js
 babel.config.js
 __tests__
+extractcss.js

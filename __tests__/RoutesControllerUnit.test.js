@@ -58,8 +58,8 @@ describe('getItemPhotos', () => {
   };
 
   const nullData = {
-    thumbnails: ['https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg'],
-    photos: ['https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg'],
+    thumbnails: ['https://fec-related-products.s3.us-east-2.amazonaws.com/Coming%2BSoon%2BNew%2BAnnouncement%2BWatercolor%2BPainterly%2BSocial%2BMedia.jpg'],
+    photos: ['https://fec-related-products.s3.us-east-2.amazonaws.com/Coming%2BSoon%2BNew%2BAnnouncement%2BWatercolor%2BPainterly%2BSocial%2BMedia.jpg'],
   };
 
   test('should return two arrays of item photos', async () => {
