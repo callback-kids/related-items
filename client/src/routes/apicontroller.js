@@ -29,8 +29,8 @@ const formatItemPhotos = (itemPhotos) => {
   itemPhotos.forEach((value) => {
     if (value.url === null || value.thumbnail_url === null) {
       // default, image not found, image
-      thumbnails.push('https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg');
-      photos.push('https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg');
+      thumbnails.push('https://fec-related-products.s3.us-east-2.amazonaws.com/Coming%2BSoon%2BNew%2BAnnouncement%2BWatercolor%2BPainterly%2BSocial%2BMedia.jpg');
+      photos.push('https://fec-related-products.s3.us-east-2.amazonaws.com/Coming%2BSoon%2BNew%2BAnnouncement%2BWatercolor%2BPainterly%2BSocial%2BMedia.jpg');
     } else {
       thumbnails.push(value.thumbnail_url);
       photos.push(value.url);
