@@ -12,7 +12,7 @@ RUN npm run build
 
 RUN cd server && npm install
 
-EXPOSE 3001
+EXPOSE 3004
 
 CMD ["npm", "run", "server"]
 

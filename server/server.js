@@ -3,7 +3,7 @@ const path = require('path');
 const compression = require('compression');
 
 const app = express();
-const PORT = 3001;
+const PORT = 3004;
 
 // used to compress files when sending them to client
 const shouldCompress = (req, res) => {
