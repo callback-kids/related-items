@@ -63,41 +63,41 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container>
 
         <Row>
-          <Col xs={1} sm={2} />
-          <Col xs={10} sm={8}>
+          <Col xs={1} />
+          <Col xs={10}>
             <div className="carousel-title">People Also Liked</div>
           </Col>
-          <Col xs={1} sm={2} />
+          <Col xs={1} />
         </Row>
         <Row className="carousel-rows">
-          <Col xs={1} sm={2} />
-          <Col xs={10} sm={8}>
+          <Col xs={1} />
+          <Col xs={10}>
             <RelatedProducts
               products={this.state.relatedItems}
               productCompare={this.state.featuredProductData.data}
             />
           </Col>
-          <Col xs={1} sm={2} />
+          <Col xs={1} />
         </Row>
         <Row>
-          <Col xs={1} sm={2} />
-          <Col xs={10} sm={8}>
+          <Col xs={1} />
+          <Col xs={10}>
             <div className="carousel-title">Your Outfit</div>
           </Col>
-          <Col xs={1} sm={2} />
+          <Col xs={1} />
         </Row>
         <Row className="carousel-rows">
-          <Col xs={1} sm={2} />
-          <Col xs={10} sm={8}>
+          <Col xs={1} />
+          <Col xs={10}>
             <Outfit
               outfit={this.state.outfit}
               currentItem={this.state.featuredProductData}
             />
           </Col>
-          <Col xs={1} sm={2} />
+          <Col xs={1} />
         </Row>
         <Row>
           <Col xs={0} sm={2} />
@@ -105,7 +105,7 @@ class App extends React.Component {
           <Col xs={0} sm={2} />
         </Row>
 
-      </div>
+      </Container>
     );
   }
 }
